@@ -12,6 +12,8 @@
         <activity android:name=".ArticleSearchList"></activity>
         <activity android:name=".FullArticle" />
         <activity android:name=".NYTimes_MainActivity">
+
+        <activity android:name=".FlightStatus_MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
