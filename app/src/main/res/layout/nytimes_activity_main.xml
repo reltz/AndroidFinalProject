@@ -21,7 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:stackFromBottom="false"
-        android:transcriptMode="alwaysScroll">
+        android:transcriptMode="alwaysScroll"
+
+        >
 
     </ListView>
 

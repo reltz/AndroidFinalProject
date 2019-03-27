@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,12 +38,17 @@ public class ArticleAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (getCount()!=0) {
-            convertView = inflater.inflate(R.layout.list_item,null);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
-        }
+        TextView root = (TextView) convertView;
+        if (convertView== null) {
+            root = (TextView) inflater.inflate(R.layout.list_item,parent,false);
+                    }
 
-        return convertView;
+        String toDisplay = article.get(position).getTitle();
+
+        root.setText(toDisplay);
+        return root;
     }
 
 

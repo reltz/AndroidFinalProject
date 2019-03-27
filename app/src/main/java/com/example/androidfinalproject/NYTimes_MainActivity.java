@@ -51,8 +51,10 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 "\n" +
                 "[What you need to know to start the day: Get New York Today", 1));
 
-        ArticleAdapter adapter = new ArticleAdapter(newsList,getApplicationContext());
+        newsList.add(new Article("Title of second article", "This is the second article",2));
 
+        ArticleAdapter adapter = new ArticleAdapter(newsList,getApplicationContext());
+        nyFeed.setClickable(true);
         nyFeed.setAdapter(adapter);
     }
 }
