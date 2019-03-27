@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.support.design.widget.Snackbar;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     private Button search;
     private EditText typeSearch;
     private ListView nyFeed;
+    private ProgressBar progress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,9 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         typeSearch = findViewById(R.id.nyTypeSearch);
         search = findViewById(R.id.nySearchButton);
         nyFeed = findViewById(R.id.listView);
+        progress=findViewById(R.id.indeterminateBar);
 
+            progress.setVisibility(View.VISIBLE);
 
         goBack.setOnClickListener(a -> {
             Snackbar sb = Snackbar.make(goBack, "Go Back?", Snackbar.LENGTH_LONG);
@@ -51,10 +57,27 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 "\n" +
                 "[What you need to know to start the day: Get New York Today", 1));
 
-        newsList.add(new Article("Title of second article", "This is the second article",2));
+        newsList.add(new Article("Title of second article", "This is the second article", 2));
 
-        ArticleAdapter adapter = new ArticleAdapter(newsList,getApplicationContext());
+        ArticleAdapter adapter = new ArticleAdapter(newsList, getApplicationContext());
+
         nyFeed.setClickable(true);
+
+
+        nyFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position==0) {
+                    Intent nextArticle = new Intent(NYTimes_MainActivity.this,FullArticle.class);
+                    startActivity(nextArticle);
+                }
+
+
+            }
+        });
         nyFeed.setAdapter(adapter);
+
+
     }
 }

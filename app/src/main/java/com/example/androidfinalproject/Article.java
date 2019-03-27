@@ -1,6 +1,7 @@
 package com.example.androidfinalproject;
 
-public class Article {private String title;
+public class Article {
+    private String title;
     private String body;
     private int articleID;
 
