@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--tools:context=".kevin.ArticleActivity1"-->
+
+
+
+
+    <TextView
+        android:id="@+id/news_title_detailed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:text="Article Title"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/news_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Article Body" />
+
+    <Button
+        android:id="@+id/savebtn_hd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginTop="20dp"/>
+
+
+</LinearLayout>
