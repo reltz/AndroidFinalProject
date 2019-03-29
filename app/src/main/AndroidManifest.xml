@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.androidfinalproject">
+    package="com.example.androidfinalproject" >
 
     <application
         android:allowBackup="true"
@@ -12,12 +12,19 @@
         <activity android:name=".FlightStatusFlightInformation"></activity>
         <activity android:name=".FlightStatusHome" />
         <activity android:name=".FlightStatus_MainActivity">
+        <activity android:name=".NewsFeed_MainActivity"/>
+        <!--activity android:name=".ArticleSearchList"></activity-->
+        <activity android:name=".FullArticle" />
+        <activity android:name=".NYTimes_MainActivity"/>
+
+        <activity android:name=".FlightStatus_MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NewsFeed_Detail" />
     </application>
 
 </manifest>
