@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewsFeed_MainActivity">
-        <activity android:name=".ArticleSearchList"></activity>
+        <activity android:name=".NewsFeed_MainActivity"/>
+        <!--activity android:name=".ArticleSearchList"></activity-->
         <activity android:name=".FullArticle" />
-        <activity android:name=".NYTimes_MainActivity">
+        <activity android:name=".NYTimes_MainActivity"/>
 
         <activity android:name=".FlightStatus_MainActivity" >
             <intent-filter>
@@ -21,9 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsFeed"></activity>
         <activity android:name=".NewsFeed_Detail" />
-        <activity android:name=".NewsFeed_Adapter" />
     </application>
 
 </manifest>
