@@ -1,4 +1,7 @@
 <resources>
     <string name="flightStatus_menuBtnReturn">Flight Status Return Button</string>
     <string name="flightStatus_menuBtnHelp">Flight Status Help Button</string>
+
+    <string name="nysearch">Search</string>
+    <string name="nyBack">Go back</string>
 </resources>

@@ -14,14 +14,17 @@
         <activity android:name=".NewsFeed_MainActivity"/>
         <!--activity android:name=".ArticleSearchList"></activity-->
         <activity android:name=".FullArticle" />
-        <activity android:name=".NYTimes_MainActivity"/>
+        <activity android:name=".NYTimes_MainActivity">
 
+
+        </activity>
         <activity android:name=".FlightStatus_MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".NewsFeed_Detail" />
     </application>
