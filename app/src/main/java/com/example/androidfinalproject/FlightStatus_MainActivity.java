@@ -19,5 +19,13 @@ public class FlightStatus_MainActivity extends AppCompatActivity {
 
             startActivity(flightStatus);
         });
+
+        Button goToNewsFeed = findViewById(R.id.goToNewsFeed);
+        goToNewsFeed.setOnClickListener(c -> {
+            Intent newsFeed = new Intent(FlightStatus_MainActivity.this, NewsFeed_MainActivity.class);
+
+            startActivity(newsFeed);
+        });
+
     }
 }
