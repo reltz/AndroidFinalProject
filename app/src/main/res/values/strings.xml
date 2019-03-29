@@ -1,0 +1,4 @@
+<resources>
+    <string name="flightStatus_menuBtnReturn">Flight Status Return Button</string>
+    <string name="flightStatus_menuBtnHelp">Flight Status Help Button</string>
+</resources>

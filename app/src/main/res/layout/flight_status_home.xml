@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FlightStatusHome">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/flightStatusToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        />
+
+    <RelativeLayout
+        android:id="@+id/flightStatusTrack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flightStatusToolbar" >
+
+        <TextView
+            android:id="@+id/flightStatusWelcomeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Flight Status Tracker"
+            android:layout_centerHorizontal="true" />
+
+        <RadioGroup
+            android:id="@+id/flightStatusRadioAirportFlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flightStatusWelcomeTxt"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/flightStatusRadioAirportCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Airport Code" />
+
+            <RadioButton
+                android:id="@+id/flightStatusRadioFlightNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flight Number" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/flightStatusSearchCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/flightStatusRadioAirportFlight"
+            android:layout_alignStart="@id/flightStatusSearchBtn"
+            android:layout_alignEnd="@id/flightStatusSearchBtn"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/flightStatusSearchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track me!"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/flightStatusSearchCode"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/flightStatusSavedFlightsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saved Flights"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/flightStatusTrack" />
+
+    <ListView
+        android:id="@+id/flightStatusSavedFlights"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flightStatusSavedFlightsTxt" >
+
+    </ListView>
+
+    <ProgressBar
+        android:id="@+id/flightProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleInverse"
+        android:layout_below="@+id/flightStatusSavedFlightsTxt"
+        />
+
+
+</RelativeLayout>

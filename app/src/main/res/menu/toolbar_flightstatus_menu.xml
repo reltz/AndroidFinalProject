@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/flightStatusBtnReturn"
+        android:icon="@drawable/returnbtn"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:title="@string/flightStatus_menuBtnReturn" />
+
+    <item android:id="@+id/flightStatusBtnHelp"
+        android:title="@string/flightStatus_menuBtnHelp"
+        android:icon="@android:drawable/ic_menu_help"
+        android:orderInCategory="2"
+        app:showAsAction="always" />
+
+    <!--<item android:id="@+id/item2"-->
+        <!--android:icon=""-->
+        <!--android:orderInCategory="3"-->
+        <!--app:showAsAction="always"-->
+        <!--android:title="@string/flightStatus_menuBtn2" />-->
+
+
+
+</menu>
