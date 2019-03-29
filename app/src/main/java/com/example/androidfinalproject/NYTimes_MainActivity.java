@@ -23,7 +23,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     private EditText typeSearch;
     private ListView nyFeed;
     private ProgressBar progress;
-
+//NY times milestone 2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
