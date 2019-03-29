@@ -27,5 +27,12 @@ public class FlightStatus_MainActivity extends AppCompatActivity {
             startActivity(newsFeed);
         });
 
+        Button goNytimes = findViewById(R.id.goNYtimes);
+
+        goNytimes.setOnClickListener(a-> {
+            Intent nyTimes = new Intent(FlightStatus_MainActivity.this,NYTimes_MainActivity.class);
+            startActivity(nyTimes);
+        });
+
     }
 }
