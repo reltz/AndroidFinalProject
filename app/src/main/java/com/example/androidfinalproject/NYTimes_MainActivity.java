@@ -2,6 +2,7 @@ package com.example.androidfinalproject;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,24 +13,29 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.support.design.widget.Snackbar;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NYTimes_MainActivity extends AppCompatActivity {
     private Button goBack;
     private Button search;
-    private EditText typeSearch;
+    //private EditText typeSearch;
     private ListView nyFeed;
     private ProgressBar progress;
     private Toolbar helpBar;
+    List<Article> newsList;
 
 //NY times milestone 2
 
@@ -38,15 +44,15 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nytimes_activity_main);
         goBack = findViewById(R.id.nyBackButton);
-        typeSearch = findViewById(R.id.nyTypeSearch);
+        //typeSearch = findViewById(R.id.nyTypeSearch);
         search = findViewById(R.id.nySearchButton);
         nyFeed = findViewById(R.id.listView);
         progress = findViewById(R.id.indeterminateBar);
-        helpBar=findViewById(R.id.nyToolbarHelp);
+        helpBar = findViewById(R.id.nyToolbarHelp);
         setSupportActionBar(helpBar);
 
-
-        progress.setVisibility(View.VISIBLE);
+        //INVISIBLE PROGrESS
+        progress.setVisibility(View.INVISIBLE);
 
         goBack.setOnClickListener(a -> {
             Snackbar sb = Snackbar.make(goBack, "Go Back?", Snackbar.LENGTH_LONG);
@@ -61,16 +67,20 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         });
 
 
-        List<Article> newsList = new ArrayList<Article>();
-        newsList.add(new Article("Efforts to Legalize Marijuana in New Jersey Collapses", "TRENTON — A monthslong effort to legalize marijuana in New Jersey collapsed on Monday after Democrats were unable to muster enough support for the measure, rejecting a central campaign pledge from Gov. Philip D. Murphy and leaving the future of the legalization movement in doubt.\n" +
-                "\n" +
-                "The failure in the legislature marks one of the biggest setbacks for Mr. Murphy, who despite having full Democratic control in the State Senate and the assembly, had faced constant party infighting and had struggled to bend the legislature to his progressive agenda.\n" +
-                "\n" +
-                "[What you need to know to start the day: Get New York Today", 1));
-
-        newsList.add(new Article("Title of second article", "This is the second article", 2));
+        newsList = new ArrayList<Article>();
+        Log.e("status", "Created news array list");
 
         ArticleAdapter adapter = new ArticleAdapter(newsList, getApplicationContext());
+
+
+        //newsList.add(new Article("test1", "empty", 0));
+
+        DataFetcher networkThread = new DataFetcher();
+        Log.e("status", "created datafetcher thread");
+        //starts background thread
+        networkThread.execute("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml");
+        Log.e("status", "executed thread");
+
 
         nyFeed.setClickable(true);
 
@@ -88,7 +98,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             }
         });
         nyFeed.setAdapter(adapter);
-
+        Log.e("status", "Adapter set for listview");
 
     }
 
@@ -100,8 +110,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        switch(item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.nytHelp:
                 alertNytHelp();
                 break;
@@ -111,8 +121,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
     public void alertNytHelp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Author: Rodrigo Eltz" +"\n"+"Version: 1.0"+
-                "\n\n"+
+        builder.setMessage("Author: Rodrigo Eltz" + "\n" + "Version: 1.0" +
+                "\n\n" +
                 "Instructions: This app shows a list of latest New York Times Article." +
                 " You can select one to read and save to your favorites, as well as search " +
                 "for articles using the search box.").setPositiveButton("Understood", new DialogInterface.OnClickListener() {
@@ -124,4 +134,65 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
         builder.create().show();
     }
+
+
+    private class DataFetcher extends AsyncTask<String, Integer, String> {
+        private List<Article> news = new ArrayList<>();
+        private int index = 0;
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                //get the string url:
+                String myUrl = params[0];
+
+
+                //create the network connection
+                URL url = new URL(myUrl);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                InputStream inStream = urlConnection.getInputStream();
+                Log.e("response", inStream.toString());
+
+                //create xml pull parser
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                factory.setNamespaceAware(false);
+                XmlPullParser xpp = factory.newPullParser();
+                xpp.setInput(inStream, "UTF-8");
+
+                //loop over the XML
+                while (xpp.getEventType() != XmlPullParser.END_DOCUMENT) {
+                    if (xpp.getEventType() == XmlPullParser.START_TAG) {
+                        String tagName = xpp.getName(); //get the name of starting tag
+                        if (tagName.equals("title")) {
+                            xpp.next();
+                            String title = xpp.getText();
+                            Log.i("title of article",title);
+                            news.add(new Article(title, "", index));
+                            Log.e("status inside parser:", "adding articles");
+                            index++;
+
+                                                 }
+
+                    }
+                    xpp.next();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "finished task";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            for (Article a : news) {
+                newsList.add(a);
+                Log.e("status", "added item to arraylist news");
+
+            }
+        }
+    }
+
+
 }
