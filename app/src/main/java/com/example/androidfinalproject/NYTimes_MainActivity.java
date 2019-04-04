@@ -19,10 +19,14 @@ import android.widget.ListView;
 import android.support.design.widget.Snackbar;
 import android.widget.ProgressBar;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -154,29 +158,37 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 InputStream inStream = urlConnection.getInputStream();
                 Log.e("response", inStream.toString());
 
-                //create xml pull parser
-                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-                factory.setNamespaceAware(false);
-                XmlPullParser xpp = factory.newPullParser();
-                xpp.setInput(inStream, "UTF-8");
 
-                //loop over the XML
-                while (xpp.getEventType() != XmlPullParser.END_DOCUMENT) {
-                    if (xpp.getEventType() == XmlPullParser.START_TAG) {
-                        String tagName = xpp.getName(); //get the name of starting tag
-                        if (tagName.equals("title")) {
-                            xpp.next();
-                            String title = xpp.getText();
-                            Log.i("title of article",title);
-                            news.add(new Article(title, "", index));
-                            Log.e("status inside parser:", "adding articles");
-                            index++;
+                //JSON
+                // URL
+                URL jurl = new URL("https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=6Y1zFdkuCRAVyJAQBwhgB9x3Dgw1F5JA");
+                HttpURLConnection jurlConnection = (HttpURLConnection) jurl.openConnection();
+                inStream = jurlConnection.getInputStream();
 
-                                                 }
-
-                    }
-                    xpp.next();
+                //create JSON object for response
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inStream, "UTF-8"),8);
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+                while ((line=reader.readLine())!=null) {
+                    sb.append(line+"\n");
                 }
+                String result = sb.toString();
+
+
+                //now a json table
+                JSONObject jObject = new JSONObject(result);
+                JSONArray results = jObject.getJSONArray("results");
+                        //.getJSONObject(0).getString("title");
+                for (int index=0; index<results.length(); index++) {
+                    news.add(new Article(results.getJSONObject(index).getString("title"),
+                            results.getJSONObject(index).getString("abstract"),index));
+                }
+
+
+
+
+
+
 
             } catch (Exception e) {
                 e.printStackTrace();
