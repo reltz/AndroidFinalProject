@@ -1,9 +1,15 @@
 package com.example.androidfinalproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,6 +29,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     private EditText typeSearch;
     private ListView nyFeed;
     private ProgressBar progress;
+    private Toolbar helpBar;
+
 //NY times milestone 2
 
     @Override
@@ -33,9 +41,12 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         typeSearch = findViewById(R.id.nyTypeSearch);
         search = findViewById(R.id.nySearchButton);
         nyFeed = findViewById(R.id.listView);
-        progress=findViewById(R.id.indeterminateBar);
+        progress = findViewById(R.id.indeterminateBar);
+        helpBar=findViewById(R.id.nyToolbarHelp);
+        setSupportActionBar(helpBar);
 
-            progress.setVisibility(View.VISIBLE);
+
+        progress.setVisibility(View.VISIBLE);
 
         goBack.setOnClickListener(a -> {
             Snackbar sb = Snackbar.make(goBack, "Go Back?", Snackbar.LENGTH_LONG);
@@ -68,8 +79,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position==0) {
-                    Intent nextArticle = new Intent(NYTimes_MainActivity.this,FullArticle.class);
+                if (position == 0) {
+                    Intent nextArticle = new Intent(NYTimes_MainActivity.this, FullArticle.class);
                     startActivity(nextArticle);
                 }
 
@@ -79,5 +90,38 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         nyFeed.setAdapter(adapter);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.nytimes_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.nytHelp:
+                alertNytHelp();
+                break;
+        }
+        return true;
+    }
+
+    public void alertNytHelp() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Author: Rodrigo Eltz" +"\n"+"Version: 1.0"+
+                "\n\n"+
+                "Instructions: This app shows a list of latest New York Times Article." +
+                " You can select one to read and save to your favorites, as well as search " +
+                "for articles using the search box.").setPositiveButton("Understood", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                builder.create().cancel();
+            }
+        });
+
+        builder.create().show();
     }
 }
