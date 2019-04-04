@@ -9,23 +9,21 @@
         android:id="@+id/flightStatusFlightName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="2"/>
+        android:layout_columnWeight="2" />
 
-    <Button
-        android:id="@+id/flightStatusFlightInfoBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Info"
-        android:onClick="displayFlightInfo"
-         />
+    <!--<Button-->
+        <!--android:id="@+id/flightStatusFlightInfoBtn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Info"-->
+        <!--android:onClick="displayFlightInfo"-->
+         <!--/>-->
 
     <ImageButton
         android:id="@+id/flightStatusFlightDeleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete"
         android:src="@android:drawable/ic_menu_delete"
-        android:onClick="deleteFlight"
          />
 
 </GridLayout>

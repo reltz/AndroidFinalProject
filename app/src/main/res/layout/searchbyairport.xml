@@ -7,7 +7,7 @@
         android:id="@+id/flightStatusWelcomeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please select Arrivals or Departures"
+        android:text="@string/flight_number_airport_search_title"
         android:layout_centerHorizontal="true" />
 
     <GridLayout

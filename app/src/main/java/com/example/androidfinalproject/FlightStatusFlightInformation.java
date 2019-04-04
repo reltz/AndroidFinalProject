@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
-public  class FlightStatusFlightInformation extends AppCompatActivity {
+public class FlightStatusFlightInformation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

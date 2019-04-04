@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/flightStatusInstructionsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/flightstatus_how_to_title"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true" />
+
+
+    <TextView
+        android:id="@+id/flightStatusInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="In the home page, you can track flights by airport code or flight number or select saved flights.\n
+        \n
+        Tracking new flights:\n
+        \t- Select the method, type the code/number and click Track Me.\n
+        \t\tIf \'Airport Code\' is selected, a dialog box prompts the user to select arrivals or departures to display flights.\n
+        \t\tIf \'Flight Number\' is selected, the found flight(s) are displayed.\n
+        \tClick on the desired flight to display detailed information and/or save it to your list.\n
+        \n
+        Saved flights:\n
+        \tAfter flights are tracked, user has the option to save them to 'My Flights' list.\n
+        \tThis list allows user to check flight information by clicking on the desired flight or delete it from the list.\n"
+        android:layout_below="@+id/flightStatusInstructionsTitle" />
+
+    <TextView
+        android:id="@+id/flightStatusActivityVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/flightStatusInstructions"
+        android:text="@string/flightstatus_version" />
+
+    <TextView
+        android:id="@+id/flighStatusAuthorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/flightstatus_author"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/flightStatusActivityVersion" />
+
+</RelativeLayout>

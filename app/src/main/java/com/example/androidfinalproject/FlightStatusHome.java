@@ -29,10 +29,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightStatusHome extends AppCompatActivity {
+    public static final String ITEM_SELECTED = "ITEM";
+    public static final String ITEM_POSITION = "POSITION";
+    public static final String ITEM_ID = "ID";
+    public static final int FLIGHT_DETAIL_ACTIVITY = 345;
     Toolbar flightStatusToolbar;
     ListView savedFlights;
     List<Flight> flights = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,6 @@ public class FlightStatusHome extends AppCompatActivity {
         flightStatusToolbar = findViewById(R.id.flightStatusToolbar);
         setSupportActionBar(flightStatusToolbar);
         getSupportActionBar().setTitle("Flight Status Tracker");
-
 
         Button searchFlights = findViewById(R.id.flightStatusSearchBtn);
 
@@ -76,11 +78,24 @@ public class FlightStatusHome extends AppCompatActivity {
 
         ListAdapter aListAdapter = new ListAdapter(flights, getApplicationContext());
         savedFlights.setAdapter(aListAdapter);
+
+
+//        ProgressBar progressBar = findViewById(R.id.flightProgressBar);
+//        progressBar.setVisibility(View.VISIBLE);
+
+        savedFlights.setOnItemClickListener((list, item, position, id) -> {
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString(ITEM_SELECTED, flights.get(position).getFlightName());
+            dataToPass.putInt(ITEM_POSITION, position);
+            dataToPass.putLong(ITEM_ID, id);
+
+            Intent flightInformation = new Intent(FlightStatusHome.this, FlightStatusFlightInformation.class);
+            flightInformation.putExtras(dataToPass);
+            startActivityForResult(flightInformation, FLIGHT_DETAIL_ACTIVITY);
+
+        });
+
         aListAdapter.notifyDataSetChanged();
-
-        ProgressBar progressBar = findViewById(R.id.flightProgressBar);
-        progressBar.setVisibility(View.VISIBLE);
-
 
     }
 
@@ -113,6 +128,7 @@ public class FlightStatusHome extends AppCompatActivity {
                 break;
             case R.id.flightStatusBtnHelp:
                 // Author name in dialog box
+                howToUseFlightTracker();
                 Toast.makeText(this, "TO BE DEVELOPED", Toast.LENGTH_LONG).show();
                 break;
         }
@@ -147,6 +163,25 @@ public class FlightStatusHome extends AppCompatActivity {
             }
         }).setIcon(R.drawable.msgicon)  .setView(middle);
         builder.create().show();
+    }
+
+    public void howToUseFlightTracker(){
+        View middle = getLayoutInflater().inflate(R.layout.flight_status_howtouse_author, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // What to do on Departures
+            }
+        }).setIcon(R.drawable.returnbtn)
+                .setPositiveButton("", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // What to do on Departures
+                    }
+                }).setIcon(R.drawable.msgicon)  .setView(middle);
+        builder.create().show();
+
     }
 
     public void displayFlightInfo(View view){

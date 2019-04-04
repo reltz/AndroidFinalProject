@@ -18,7 +18,7 @@
 
 
         </activity>
-        <activity android:name=".FlightStatus_MainActivity" >
+        <activity android:name=".FinalProject_MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
