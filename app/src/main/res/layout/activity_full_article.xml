@@ -7,7 +7,6 @@
 
 
 
-
     <TextView
         android:id="@+id/news_title_detailed"
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
         android:id="@+id/savebtn_hd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="R.string.nyButtonSave"
         android:layout_marginTop="20dp"/>
 
 

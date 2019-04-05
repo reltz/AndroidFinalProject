@@ -1,7 +1,14 @@
 <resources>
     <string name="flightStatus_menuBtnReturn">Flight Status Return Button</string>
     <string name="flightStatus_menuBtnHelp">Flight Status Help Button</string>
-
+    <string name="nythelp">Help</string>
     <string name="nysearch">Search</string>
     <string name="nyBack">Go back</string>
+    <string name="nyUnderstood">Understood</string>
+    <string name="nyAlertHelp">"Author: Rodrigo Eltz \n Version: 1.0
+                \n\n Instructions: This app shows a list of latest New York Times Article. You can select one to read and save to your favorites, as well as search for articles using the search box."</string>
+
+    <string name="nySaveAlert">Hit save if you want to save the article!</string>
+    <string name="nyButtonSave">Save</string>
+
 </resources>
