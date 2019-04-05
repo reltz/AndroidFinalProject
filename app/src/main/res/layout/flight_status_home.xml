@@ -23,7 +23,7 @@
             android:id="@+id/flightStatusWelcomeTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to Flight Status Tracker"
+            android:text="@string/flightstatus_welcomeTitle"
             android:layout_centerHorizontal="true" />
 
         <RadioGroup
@@ -38,13 +38,13 @@
                 android:id="@+id/flightStatusRadioAirportCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Airport Code" />
+                android:text="@string/flightstatus_airport_code" />
 
             <RadioButton
-                android:id="@+id/flightStatusRadioFlightNumber"
+                android:id="@+id/flightStatusRadioFlightCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Flight Number" />
+                android:text="@string/flightstatus_flight_code" />
         </RadioGroup>
 
         <EditText
@@ -54,13 +54,14 @@
             android:layout_below="@id/flightStatusRadioAirportFlight"
             android:layout_alignStart="@id/flightStatusSearchBtn"
             android:layout_alignEnd="@id/flightStatusSearchBtn"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:hint="@string/flightstatus_searchCodeHint"/>
 
         <Button
             android:id="@+id/flightStatusSearchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Track me!"
+            android:text="@string/flightstatus_searchButton"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/flightStatusSearchCode"/>
     </RelativeLayout>
@@ -69,7 +70,7 @@
         android:id="@+id/flightStatusSavedFlightsTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Saved Flights"
+        android:text="@string/flightstatus_saved_flights"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/flightStatusTrack" />
 
@@ -81,14 +82,22 @@
 
     </ListView>
 
+    <!--<ProgressBar-->
+        <!--android:id="@+id/flightProgressBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:visibility="invisible"-->
+        <!--style="?android:attr/progressBarStyleInverse"-->
+        <!--android:layout_below="@+id/flightStatusSavedFlightsTxt"-->
+        <!--/>-->
+
     <ProgressBar
-        android:id="@+id/flightProgressBar"
+        android:id="@+id/flightStatusInfoProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        style="?android:attr/progressBarStyleInverse"
-        android:layout_below="@+id/flightStatusSavedFlightsTxt"
-        />
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@+id/flightStatusSavedFlights"/>
 
 
 </RelativeLayout>

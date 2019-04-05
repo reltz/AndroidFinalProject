@@ -7,25 +7,44 @@
     tools:context=".FlightStatusFlightInformation">
 
     <TextView
-        android:id="@+id/a"
-        android:layout_width="match_parent"
+        android:id="@+id/flight_info_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Flight Info"
-        android:layout_alignParentStart="true"/>
+        android:text="@string/flightstatus_flight_info_title"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"/>
 
     <TextView
-        android:id="@+id/b"
-        android:layout_width="match_parent"
+        android:id="@+id/flight_number_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Flight Name"
-        android:layout_below="@id/a"/>
+        android:text="@string/flightstatus_flight_number"
+        android:layout_below="@id/flight_info_title" />
 
     <TextView
-        android:id="@+id/c"
+        android:id="@+id/flight_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Flight Number"
-        android:layout_below="@id/b"/>
+        android:layout_below="@id/flight_info_title"
+        android:layout_toEndOf="@id/flight_number_label" />
+
+    <TextView
+        android:id="@+id/flight_status_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/flightstatus_flight_status"
+        android:layout_below="@id/flight_number_label" />
+
+    <TextView
+        android:id="@+id/flight_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flight_number_label"
+        android:layout_toEndOf="@id/flight_status_label" />
+
+
+
+
 
 
 
