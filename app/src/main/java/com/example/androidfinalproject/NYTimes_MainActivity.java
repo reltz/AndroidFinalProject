@@ -100,10 +100,11 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    Intent nextArticle = new Intent(NYTimes_MainActivity.this, FullArticle.class);
-                    startActivity(nextArticle);
-                }
+
+                Intent nextArticle = new Intent(NYTimes_MainActivity.this, FullArticle.class);
+                nextArticle.putExtra("title",newsList.get(position).getTitle());
+                nextArticle.putExtra("body",newsList.get(position).getBody());
+                startActivity(nextArticle);
 
 
             }
@@ -178,11 +179,11 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 InputStream inStream = jurlConnection.getInputStream();
 
                 //create JSON object for response
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inStream, "UTF-8"),8);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inStream, "UTF-8"), 8);
                 StringBuilder sb = new StringBuilder();
                 String line = null;
-                while ((line=reader.readLine())!=null) {
-                    sb.append(line+"\n");
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line + "\n");
                 }
                 String result = sb.toString();
 
@@ -190,10 +191,10 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 //now a json table
                 JSONObject jObject = new JSONObject(result);
                 JSONArray results = jObject.getJSONArray("results");
-                        //.getJSONObject(0).getString("title");
-                for (int index=0; index<results.length(); index++) {
+                //.getJSONObject(0).getString("title");
+                for (int index = 0; index < results.length(); index++) {
                     news.add(new Article(results.getJSONObject(index).getString("title"),
-                            results.getJSONObject(index).getString("abstract"),index));
+                            results.getJSONObject(index).getString("abstract"), index));
                 }
 
             } catch (Exception e) {
@@ -204,6 +205,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
         /**
          * Method that adds all the articles found in the json from web server to the local arraylist of articles
+         *
          * @param s
          */
         @Override

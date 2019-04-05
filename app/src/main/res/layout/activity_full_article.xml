@@ -27,7 +27,7 @@
         android:id="@+id/nyButtonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="R.string.nyButtonSave"
+        android:text="@string/nyButtonSave"
         android:layout_marginTop="20dp"/>
 
 
