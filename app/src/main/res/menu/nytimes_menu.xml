@@ -9,7 +9,7 @@
         <item
             android:id="@+id/nytHelp"
             android:icon="@drawable/nythelp"
-            android:title="@string/help"
+            android:title="@string/nythelp"
             app:showAsAction="always"/>
 
 

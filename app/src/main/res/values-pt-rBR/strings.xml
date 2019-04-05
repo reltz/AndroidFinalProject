@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="nythelp">Ajuda</string>
+    <string name="nysearch">Buscar</string>
+    <string name="nyBack">Voltar</string>
+    <string name="nyUnderstood">Entendi</string>
+    <string name="nyAlertHelp">"Autor: Rodrigo Eltz \n Versao: 1.0
+                \n\n Instrucoes: Esse app mostra uma lista dos mais recentes artigos do New York Times. Tu podes selecionar um para ler e salvar nos favoritos, alem de poder procurar artigos usando a ferramenta de busca."
+
+    </string>
+    <string name="nySaveAlert">Clique em salvar para salvar o artigo!</string>
+    <string name="nyButtonSave">Salvar</string>
+</resources>

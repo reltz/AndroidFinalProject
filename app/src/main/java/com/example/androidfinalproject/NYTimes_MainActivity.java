@@ -32,7 +32,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that defines the Main activity for the New York Times Feed
+ * Author: Rodrigo Eltz
+ * Date: April 2019
+ * Version: 2.0
+ **/
 public class NYTimes_MainActivity extends AppCompatActivity {
+
     private Button goBack;
     private Button search;
     //private EditText typeSearch;
@@ -82,7 +89,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         DataFetcher networkThread = new DataFetcher();
         Log.e("status", "created datafetcher thread");
         //starts background thread
-        networkThread.execute("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml");
+        networkThread.execute();
         Log.e("status", "executed thread");
 
 
@@ -106,6 +113,12 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method that inflates the Menu with the help menuItem
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -113,6 +126,12 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Method that calls the handler for when the menu item is clicked
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -123,13 +142,13 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Method that creates a dialog box for when the menu help is clicked
+     * Describes the author, version and instructions on how to use the app
+     */
     public void alertNytHelp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Author: Rodrigo Eltz" + "\n" + "Version: 1.0" +
-                "\n\n" +
-                "Instructions: This app shows a list of latest New York Times Article." +
-                " You can select one to read and save to your favorites, as well as search " +
-                "for articles using the search box.").setPositiveButton("Understood", new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.nyAlertHelp).setPositiveButton(R.string.nyUnderstood, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 builder.create().cancel();
@@ -140,6 +159,9 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Private class DataFetcher - retrieves data in json format from NYTimes web server api
+     **/
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private List<Article> news = new ArrayList<>();
         private int index = 0;
@@ -148,22 +170,12 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             try {
-                //get the string url:
-                String myUrl = params[0];
-
-
-                //create the network connection
-                URL url = new URL(myUrl);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                InputStream inStream = urlConnection.getInputStream();
-                Log.e("response", inStream.toString());
-
 
                 //JSON
                 // URL
                 URL jurl = new URL("https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=6Y1zFdkuCRAVyJAQBwhgB9x3Dgw1F5JA");
                 HttpURLConnection jurlConnection = (HttpURLConnection) jurl.openConnection();
-                inStream = jurlConnection.getInputStream();
+                InputStream inStream = jurlConnection.getInputStream();
 
                 //create JSON object for response
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inStream, "UTF-8"),8);
@@ -184,18 +196,16 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                             results.getJSONObject(index).getString("abstract"),index));
                 }
 
-
-
-
-
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return "finished task";
         }
 
+        /**
+         * Method that adds all the articles found in the json from web server to the local arraylist of articles
+         * @param s
+         */
         @Override
         protected void onPostExecute(String s) {
             for (Article a : news) {

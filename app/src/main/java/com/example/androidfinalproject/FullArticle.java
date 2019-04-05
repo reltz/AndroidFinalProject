@@ -23,7 +23,7 @@ public class FullArticle extends AppCompatActivity {
         title.setText(current.getTitle());
         body.setText(current.getBody());
 
-        Toast.makeText(getApplicationContext(), "Hit save if you want to save the article!",
+        Toast.makeText(getApplicationContext(), R.string.nySaveAlert,
                 Toast.LENGTH_LONG).show();
     }
 }
