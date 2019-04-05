@@ -8,13 +8,14 @@
     <string name="flightStatus_menuBtnHelp">Flight Status Help Button</string>
     <string name="flightstatus_welcomeTitle">Welcome to Flight Status Tracker</string>
     <string name="flightstatus_airport_code">Airport Code</string>
+    <string name="flightstatus_flight_code">Flight Code</string>
     <string name="flightstatus_searchCodeHint">YOW or AC090</string>
     <string name="flightstatus_searchButton">Track me!</string>
     <string name="flightstatus_saved_flights">My Saved Flights</string>
     <string name="flightstatus_flight_info_title">Flight Info</string>
-    <string name="flightstatus_flight_name">Flight Name</string>
+    <string name="flightstatus_flight_number">Flight Number:\u0020</string>
     <string name="flight_number_airport_search_title">Please select Arrivals or Departures</string>
-    <string name="flightstatus_flight_number">Flight Number</string>
+    <string name="flightstatus_flight_status">Flight Status:\u0020</string>
     <string name="flightstatus_how_to_title">How to use the app</string>
     <!--<string name="flightstatus_instructions">In the home page, you can track flights by airport code or flight number or select saved flights.\n-->
         <!--\n-->

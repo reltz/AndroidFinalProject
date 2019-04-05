@@ -19,12 +19,12 @@
         <!--android:onClick="displayFlightInfo"-->
          <!--/>-->
 
-    <ImageButton
-        android:id="@+id/flightStatusFlightDeleteBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_delete"
-         />
+    <!--<ImageButton-->
+        <!--android:id="@+id/flightStatusFlightDeleteBtn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@android:drawable/ic_menu_delete"-->
+         <!--/>-->
 
 </GridLayout>
     <!---->

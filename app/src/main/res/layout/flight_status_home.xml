@@ -41,10 +41,10 @@
                 android:text="@string/flightstatus_airport_code" />
 
             <RadioButton
-                android:id="@+id/flightStatusRadioFlightNumber"
+                android:id="@+id/flightStatusRadioFlightCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/flightstatus_flight_number" />
+                android:text="@string/flightstatus_flight_code" />
         </RadioGroup>
 
         <EditText
@@ -90,6 +90,14 @@
         <!--style="?android:attr/progressBarStyleInverse"-->
         <!--android:layout_below="@+id/flightStatusSavedFlightsTxt"-->
         <!--/>-->
+
+    <ProgressBar
+        android:id="@+id/flightStatusInfoProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@+id/flightStatusSavedFlights"/>
 
 
 </RelativeLayout>
