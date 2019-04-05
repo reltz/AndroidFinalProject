@@ -36,7 +36,7 @@
         <!--\tThis list allows user to check flight information by clicking on the desired flight or delete it from the list.\n</string>-->
     <string name="flightstatus_version">Activity Version: 2</string>
     <string name="flightstatus_author">Author: Gustavo Adami</string>
-    
+
     
 
 </resources>
