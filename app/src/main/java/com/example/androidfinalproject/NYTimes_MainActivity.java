@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -82,6 +83,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         Log.e("status", "Created news array list");
 
         ArticleAdapter adapter = new ArticleAdapter(newsList, getApplicationContext());
+        nyFeed.setAdapter(adapter);
+        Log.e("status", "Adapter set for listview");
 
 
         //newsList.add(new Article("test1", "empty", 0));
@@ -112,8 +115,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
             }
         });
-        nyFeed.setAdapter(adapter);
-        Log.e("status", "Adapter set for listview");
+
+
 
     }
 
@@ -198,7 +201,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 for (int index = 0; index < results.length(); index++) {
                     news.add(new Article(results.getJSONObject(index).getString("title"),
                             results.getJSONObject(index).getString("abstract"), results.getJSONObject(index).getString("url"),
-                            results.getJSONObject(index).getJSONArray("multimedia").getString(1),index));
+                            results.getJSONObject(index).getJSONArray("multimedia").getJSONObject(2).getString("url"),index));
                 }
 
             } catch (Exception e) {

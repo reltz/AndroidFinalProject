@@ -28,6 +28,14 @@
         android:id="@+id/nyArticleLink"
         android:autoLink="web"/>
 
+    <ImageView
+        android:layout_width="300dp"
+        android:minHeight="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/nyImageArticle"
+        android:layout_gravity="center"
+        />
+
     <Button
         android:id="@+id/nyButtonSave"
         android:layout_width="match_parent"
