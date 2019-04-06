@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="30dp"
-        android:text="Article Title"
+        android:textSize="30sp"
         android:textAlignment="center"/>
 
     <TextView
@@ -21,7 +20,13 @@
         android:id="@+id/news_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Article Body" />
+         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nyArticleLink"
+        android:autoLink="web"/>
 
     <Button
         android:id="@+id/nyButtonSave"

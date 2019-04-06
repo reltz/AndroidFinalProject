@@ -78,7 +78,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         });
 
 
-        newsList = new ArrayList<Article>();
+        newsList = new ArrayList<>();
         Log.e("status", "Created news array list");
 
         ArticleAdapter adapter = new ArticleAdapter(newsList, getApplicationContext());
@@ -104,6 +104,9 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 Intent nextArticle = new Intent(NYTimes_MainActivity.this, FullArticle.class);
                 nextArticle.putExtra("title",newsList.get(position).getTitle());
                 nextArticle.putExtra("body",newsList.get(position).getBody());
+                nextArticle.putExtra("link",newsList.get(position).getLink());
+                nextArticle.putExtra("imageLink",newsList.get(position).getImageLink());
+
                 startActivity(nextArticle);
 
 
@@ -194,7 +197,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 //.getJSONObject(0).getString("title");
                 for (int index = 0; index < results.length(); index++) {
                     news.add(new Article(results.getJSONObject(index).getString("title"),
-                            results.getJSONObject(index).getString("abstract"), index));
+                            results.getJSONObject(index).getString("abstract"), results.getJSONObject(index).getString("url"),
+                            results.getJSONObject(index).getJSONArray("multimedia").getString(1),index));
                 }
 
             } catch (Exception e) {
