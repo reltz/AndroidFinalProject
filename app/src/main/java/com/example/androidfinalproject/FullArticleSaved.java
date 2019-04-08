@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,33 +18,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class FullArticle extends AppCompatActivity {
+public class FullArticleSaved extends AppCompatActivity {
     private TextView title;
     private TextView body;
     private TextView link;
     private ImageView image;
     private Toolbar helpBar;
     private NYT_DataBase db;
-    private Button saveArticle;
+    private Button deleteArticle;
+    public static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_article);
+        setContentView(R.layout.nyt_fullarticle_saved);
         title = findViewById(R.id.news_title_detailed);
         body = findViewById(R.id.news_body);
         link = findViewById(R.id.nyArticleLink);
         image = findViewById(R.id.nyImageArticle);
         helpBar = findViewById(R.id.nyToolbarHelp2);
         setSupportActionBar(helpBar);
-        saveArticle = findViewById(R.id.nyButtonSave);
+        deleteArticle = findViewById(R.id.nyButtonDelete);
         db = new NYT_DataBase(this);
 
 
@@ -53,22 +52,42 @@ public class FullArticle extends AppCompatActivity {
         String myBody = i.getStringExtra("body");
         String linkText = i.getStringExtra("link");
         String imageLink = i.getStringExtra("imageLink");
+        int articleID = i.getIntExtra("id",-1);
+
+
         title.setText(myTitle);
         body.setText(myBody);
         link.setText(linkText);
 
-        Toast.makeText(getApplicationContext(), R.string.nySaveAlert,
+        Toast.makeText(getApplicationContext(), R.string.nyDeleteAlert,
                 Toast.LENGTH_LONG).show();
 
         DataFetcher networkThread = new DataFetcher();
         networkThread.execute(imageLink);
 
-        saveArticle.setOnClickListener(b-> {
-            db.insertData(myTitle,myBody,linkText,imageLink);
-            Log.e("db state","article saved!");
+        deleteArticle.setOnClickListener(b-> {
+            try {
+                boolean del=db.deleteData(articleID);
 
-            Toast.makeText(getApplicationContext(), "Article saved!",
-                    Toast.LENGTH_LONG).show();
+                if (del==true) {
+                    Toast.makeText(getApplicationContext(), "Article deleted",
+                            Toast.LENGTH_LONG).show();
+                    Log.e("status of db", "article deleted!");
+
+                } else {
+                    Log.e("status of db","article was not deleted");
+                }
+                Intent intent = getIntent();
+                intent.putExtra("key", "refreshIt");
+                setResult(RESULT_OK, intent);
+                finish();
+
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+
         });
     }
 
@@ -88,7 +107,7 @@ public class FullArticle extends AppCompatActivity {
                 alertNytHelp();
                 break;
             case R.id.nytAllSaved:
-                Intent goSavedNow = new Intent(FullArticle.this, NYT_savedArticles.class);
+                Intent goSavedNow = new Intent(FullArticleSaved.this, NYT_savedArticles.class);
                 startActivity(goSavedNow);
                 break;
         }

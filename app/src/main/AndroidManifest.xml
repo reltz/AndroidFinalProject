@@ -17,6 +17,7 @@
         <activity android:name=".FlightStatusHome" />
         <activity android:name=".NewsFeed_MainActivity" /> <!-- activity android:name=".ArticleSearchList"></activity -->
         <activity android:name=".FullArticle" />
+        <activity android:name=".FullArticleSaved"/>
         <activity android:name=".NYTimes_MainActivity" />
         <activity android:name=".FinalProject_MainActivity">
             <intent-filter>
