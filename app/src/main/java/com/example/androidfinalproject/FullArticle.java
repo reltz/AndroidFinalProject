@@ -1,12 +1,18 @@
 package com.example.androidfinalproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,10 +25,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FullArticle extends AppCompatActivity {
-    TextView title;
-    TextView body;
-    TextView link;
-    ImageView image;
+    private TextView title;
+    private TextView body;
+    private TextView link;
+    private ImageView image;
+    private Toolbar helpBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,9 @@ public class FullArticle extends AppCompatActivity {
         body=findViewById(R.id.news_body);
         link = findViewById(R.id.nyArticleLink);
         image = findViewById(R.id.nyImageArticle);
+        helpBar = findViewById(R.id.nyToolbarHelp2);
+        setSupportActionBar(helpBar);
+
 
         Intent i = getIntent();
         String myTitle = i.getStringExtra("title");
@@ -48,6 +58,42 @@ public class FullArticle extends AppCompatActivity {
         DataFetcher networkThread = new DataFetcher();
         networkThread.execute(imageLink);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        Log.e("menu","got inflater");
+        inflater.inflate(R.menu.nytimes_menu, menu);
+        Log.e("menu","inflated menu!");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nytHelp:
+                alertNytHelp();
+                break;
+        }
+        return true;
+    }
+
+    /**
+     * Method that creates a dialog box for when the menu help is clicked
+     * Describes the author, version and instructions on how to use the app
+     */
+    public void alertNytHelp() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.nyAlertHelp).setPositiveButton(R.string.nyUnderstood, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                builder.create().cancel();
+            }
+        });
+
+        builder.create().show();
+    }
+
 
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private Bitmap myImage = null;

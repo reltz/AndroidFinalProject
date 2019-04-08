@@ -47,8 +47,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     //private EditText typeSearch;
     private ListView nyFeed;
     private ProgressBar progress;
-    private Toolbar helpBar;
     List<Article> newsList;
+    private Toolbar helpBar;
 
 //NY times milestone 2
 
@@ -63,6 +63,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         progress = findViewById(R.id.indeterminateBar);
         helpBar = findViewById(R.id.nyToolbarHelp);
         setSupportActionBar(helpBar);
+
+
 
         //INVISIBLE PROGrESS
         progress.setVisibility(View.VISIBLE);
@@ -106,25 +108,15 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Method that inflates the Menu with the help menuItem
-     *
-     * @param menu
-     * @return
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+        Log.e("menu","got inflater");
         inflater.inflate(R.menu.nytimes_menu, menu);
+        Log.e("menu","inflated menu!");
         return true;
     }
 
-    /**
-     * Method that calls the handler for when the menu item is clicked
-     *
-     * @param item
-     * @return
-     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -150,6 +142,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
         builder.create().show();
     }
+
+
 
 
     /**

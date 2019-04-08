@@ -8,12 +8,13 @@
     android:orientation="vertical">
     <requestFocus/>
 
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/nyToolbarHelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/lightGray"
+        android:minHeight="?attr/actionBarSize"
+        xmlns:android="http://schemas.android.com/apk/res/android"
 
         />
 

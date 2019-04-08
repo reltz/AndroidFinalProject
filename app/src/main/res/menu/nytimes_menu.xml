@@ -10,7 +10,8 @@
             android:id="@+id/nytHelp"
             android:icon="@drawable/nythelp"
             android:title="@string/nythelp"
-            app:showAsAction="always"/>
+            app:showAsAction="always"
+            />
 
 
 </menu>
