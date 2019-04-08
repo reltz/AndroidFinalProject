@@ -21,6 +21,7 @@ import android.support.design.widget.Snackbar;
 import android.widget.ProgressBar;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -64,7 +65,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         setSupportActionBar(helpBar);
 
         //INVISIBLE PROGrESS
-        progress.setVisibility(View.INVISIBLE);
+        progress.setVisibility(View.VISIBLE);
 
         goBack.setOnClickListener(a -> {
             Snackbar sb = Snackbar.make(goBack, "Go Back?", Snackbar.LENGTH_LONG);
@@ -156,7 +157,6 @@ public class NYTimes_MainActivity extends AppCompatActivity {
      **/
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private List<Article> news = new ArrayList<>();
-        private int index = 0;
 
         @Override
         protected String doInBackground(String... params) {
@@ -172,7 +172,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 //create JSON object for response
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inStream, "UTF-8"), 8);
                 StringBuilder sb = new StringBuilder();
-                String line = null;
+                String line;
                 while ((line = reader.readLine()) != null) {
                     sb.append(line + "\n");
                 }
@@ -182,17 +182,21 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 //now a json table
                 JSONObject jObject = new JSONObject(result);
                 JSONArray results = jObject.getJSONArray("results");
-                //.getJSONObject(0).getString("title");
                 for (int index = 0; index < results.length(); index++) {
-                    news.add(new Article(results.getJSONObject(index).getString("title"),
-                            results.getJSONObject(index).getString("abstract"), results.getJSONObject(index).getString("url"),
-                            results.getJSONObject(index).getJSONArray("multimedia").getJSONObject(2).getString("url"), index));
+
+                    //this check if multimedia array is there (some articles dont have images, or are not actual articles)
+                    if (results.getJSONObject(index).has("multimedia") && results.getJSONObject(index).get("multimedia") instanceof JSONArray) {
+                        news.add(new Article(results.getJSONObject(index).getString("title"),
+                                results.getJSONObject(index).getString("abstract"), results.getJSONObject(index).getString("url"),
+                                results.getJSONObject(index).getJSONArray("multimedia").getJSONObject(2).getString("url"), index));
+                    }
+
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.e("status:","finished background");
+            Log.e("status:", "finished background");
             return "finished task";
 
         }
@@ -211,8 +215,9 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             }
             ArticleAdapter adapter = new ArticleAdapter(newsList, getApplicationContext());
             nyFeed.setAdapter(adapter);
+            progress.setVisibility(View.INVISIBLE);
             Log.e("status", "Adapter set for listview");
-            Log.e("status:","done with postExecute");
+            Log.e("status:", "done with postExecute");
         }
     }
 
