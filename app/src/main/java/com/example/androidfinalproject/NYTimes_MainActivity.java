@@ -47,7 +47,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     //private EditText typeSearch;
     private ListView nyFeed;
     private ProgressBar progress;
-    List<Article> newsList;
+    private List<Article> newsList;
     private Toolbar helpBar;
 
 //NY times milestone 2
@@ -66,7 +66,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
 
 
-        //INVISIBLE PROGrESS
+        // Set progress bar to visible
         progress.setVisibility(View.VISIBLE);
 
         goBack.setOnClickListener(a -> {
@@ -75,10 +75,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             sb.show();
         });
 
-        search.setOnClickListener(b -> {
-            Intent searchList = new Intent(NYTimes_MainActivity.this, ArticleSearchList.class);
-            startActivity(searchList);
-        });
+
 
         newsList = new ArrayList<>();
         Log.e("status", "Created news array list");

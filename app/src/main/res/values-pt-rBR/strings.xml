@@ -15,6 +15,7 @@
     <string name="nyButtonSave">Salvar</string>
     <string name="nyButtonDelete">Deletar</string>
     <string name="emptyList">Sua lista de artigos esta vazia</string>
+    <string name="typeHere">Digite aqui</string>
 
     <string name="flightStatus_menuBtnReturn">Botao Voltar Status de Voo</string>
     <string name="flightStatus_menuBtnHelp">Botao Ajuda Status de Voo</string>
