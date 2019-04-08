@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name"> Projeto Final de Android</string>
-
+    <string name="nytSavedArticles">Artigos Salvos</string>
     <string name="nysearch">Buscar</string>
     <string name="nyBack">Voltar</string>
     <string name="nythelp">Ajuda</string>

@@ -123,6 +123,10 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             case R.id.nytHelp:
                 alertNytHelp();
                 break;
+            case R.id.nytAllSaved:
+                Intent goSavedNow = new Intent(NYTimes_MainActivity.this, NYT_savedArticles.class);
+                startActivity(goSavedNow);
+                break;
         }
         return true;
     }

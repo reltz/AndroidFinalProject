@@ -12,6 +12,10 @@
             android:title="@string/nythelp"
             app:showAsAction="always"
             />
+        <item
+                android:id="@+id/nytAllSaved"
+                android:title="@string/nytSavedArticles"
+            app:showAsAction="never"/>
 
 
 </menu>

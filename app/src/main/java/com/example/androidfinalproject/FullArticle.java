@@ -35,8 +35,8 @@ public class FullArticle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_article);
-        title=findViewById(R.id.news_title_detailed);
-        body=findViewById(R.id.news_body);
+        title = findViewById(R.id.news_title_detailed);
+        body = findViewById(R.id.news_body);
         link = findViewById(R.id.nyArticleLink);
         image = findViewById(R.id.nyImageArticle);
         helpBar = findViewById(R.id.nyToolbarHelp2);
@@ -62,9 +62,9 @@ public class FullArticle extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        Log.e("menu","got inflater");
+        Log.e("menu", "got inflater");
         inflater.inflate(R.menu.nytimes_menu, menu);
-        Log.e("menu","inflated menu!");
+        Log.e("menu", "inflated menu!");
         return true;
     }
 
@@ -73,6 +73,10 @@ public class FullArticle extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.nytHelp:
                 alertNytHelp();
+                break;
+            case R.id.nytAllSaved:
+                Intent goSavedNow = new Intent(FullArticle.this, NYT_savedArticles.class);
+                startActivity(goSavedNow);
                 break;
         }
         return true;
@@ -118,20 +122,20 @@ public class FullArticle extends AppCompatActivity {
                 responseCode = connection.getResponseCode();
                 if (responseCode == 200) {
                     myImage = BitmapFactory.decodeStream(connection.getInputStream());
-                                    }
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return "finished";
         }
+
         @Override
         protected void onPostExecute(String s) {
             image.setImageBitmap(myImage);
 
-            }
         }
-
+    }
 
 
 }
