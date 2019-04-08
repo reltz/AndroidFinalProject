@@ -11,6 +11,7 @@
     <string name="nyDeleteAlert">Hit delete to remove the article!</string>
     <string name="nyButtonSave">Save</string>
     <string name="nyButtonDelete">Delete</string>
+    <string name="emptyList">Your saved list is empty!</string>
 
     <string name="flightStatus_menuBtnReturn">Flight Status Return Button</string>
     <string name="flightStatus_menuBtnHelp">Flight Status Help Button</string>

@@ -46,7 +46,9 @@ public class NYT_savedArticles extends AppCompatActivity {
             startActivity(goFeed);
         });
         viewData();
-
+        if (myArticles.size()==0) {
+            alertEmpty();
+        }
         savedArticles.setClickable(true);
         savedArticles.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -65,6 +67,18 @@ public class NYT_savedArticles extends AppCompatActivity {
         });
 
 
+    }
+
+    public void alertEmpty() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.emptyList).setPositiveButton(R.string.nyUnderstood, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                builder.create().cancel();
+            }
+        });
+
+        builder.create().show();
     }
 
     public void viewData() {
