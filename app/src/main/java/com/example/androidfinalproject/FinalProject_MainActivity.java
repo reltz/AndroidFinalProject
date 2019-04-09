@@ -23,27 +23,6 @@ public class FinalProject_MainActivity extends AppCompatActivity {
         setSupportActionBar(finalProjectToolbarMenu);
         getSupportActionBar().setTitle("Final Project");
 
-        // Buttons for apps
-        Button goToFlightStatus = findViewById(R.id.goToFlightStatus);
-        goToFlightStatus.setOnClickListener(c -> {
-            Intent flightStatus = new Intent(FinalProject_MainActivity.this, FlightStatusHome.class);
-
-            startActivity(flightStatus);
-        });
-
-        Button goToNewsFeed = findViewById(R.id.goToNewsFeed);
-        goToNewsFeed.setOnClickListener(c -> {
-            Intent newsFeed = new Intent(FinalProject_MainActivity.this, NewsFeed_MainActivity.class);
-
-            startActivity(newsFeed);
-        });
-
-        Button goNytimes = findViewById(R.id.goNYtimes);
-
-        goNytimes.setOnClickListener(a-> {
-            Intent nyTimes = new Intent(FinalProject_MainActivity.this,NYTimes_MainActivity.class);
-            startActivity(nyTimes);
-        });
 
     }
 
