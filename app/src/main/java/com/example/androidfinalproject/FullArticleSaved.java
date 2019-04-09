@@ -52,41 +52,37 @@ public class FullArticleSaved extends AppCompatActivity {
         String myBody = i.getStringExtra("body");
         String linkText = i.getStringExtra("link");
         String imageLink = i.getStringExtra("imageLink");
-        int articleID = i.getIntExtra("id",-1);
+        int articleID = i.getIntExtra("id", -1);
 
 
         title.setText(myTitle);
         body.setText(myBody);
         link.setText(linkText);
 
-        Toast.makeText(getApplicationContext(), R.string.nyDeleteAlert,
-                Toast.LENGTH_LONG).show();
 
         DataFetcher networkThread = new DataFetcher();
         networkThread.execute(imageLink);
 
-        deleteArticle.setOnClickListener(b-> {
+        deleteArticle.setOnClickListener(b -> {
             try {
-                boolean del=db.deleteData(articleID);
+                boolean del = db.deleteData(articleID);
 
-                if (del==true) {
+                if (del == true) {
                     Toast.makeText(getApplicationContext(), "Article deleted",
                             Toast.LENGTH_LONG).show();
                     Log.e("status of db", "article deleted!");
 
                 } else {
-                    Log.e("status of db","article was not deleted");
+                    Log.e("status of db", "article was not deleted");
                 }
                 Intent intent = getIntent();
                 intent.putExtra("key", "refreshIt");
                 setResult(RESULT_OK, intent);
                 finish();
 
-
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-
 
         });
     }

@@ -92,7 +92,6 @@ public class NYT_savedArticles extends AppCompatActivity {
             }
             adapter = new ArticleAdapter(myArticles,this);
             savedArticles.setAdapter(adapter);
-
             Log.e("status","adapter set!");
         }
     }
@@ -104,14 +103,6 @@ public class NYT_savedArticles extends AppCompatActivity {
         inflater.inflate(R.menu.nytimes_menu, menu);
         Log.e("menu","inflated menu!");
         return true;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if ((data.getStringExtra("key")).equals("refreshIt")) {
-            adapter.notifyDataSetChanged();
-        }
     }
 
     @Override
@@ -139,5 +130,6 @@ public class NYT_savedArticles extends AppCompatActivity {
 
         builder.create().show();
     }
+
 
 }

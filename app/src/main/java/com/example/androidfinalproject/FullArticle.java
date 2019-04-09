@@ -57,8 +57,7 @@ public class FullArticle extends AppCompatActivity {
         body.setText(myBody);
         link.setText(linkText);
 
-        Toast.makeText(getApplicationContext(), R.string.nySaveAlert,
-                Toast.LENGTH_LONG).show();
+       
 
         DataFetcher networkThread = new DataFetcher();
         networkThread.execute(imageLink);
