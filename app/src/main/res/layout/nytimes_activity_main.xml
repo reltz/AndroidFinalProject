@@ -12,7 +12,7 @@
         android:id="@+id/nyToolbarHelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightGray"
+        android:background="@color/greenBack"
         android:minHeight="?attr/actionBarSize"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
