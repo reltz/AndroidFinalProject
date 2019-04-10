@@ -14,6 +14,7 @@
     <string name="emptyList">Your saved list is empty!</string>
     <string name="typeHere">Type here</string>
     <string name="MySavedArticles">My Articles</string>
+    <string name="searchTitle">Search Results</string>
 
     <string name="flightStatus_menuBtnReturn">Flight Status Return Button</string>
     <string name="flightStatus_menuBtnHelp">Flight Status Help Button</string>
@@ -41,7 +42,6 @@
     <!--\tThis list allows user to check flight information by clicking on the desired flight or delete it from the list.\n</string>-->
     <string name="flightstatus_version">Activity Version: 2</string>
     <string name="flightstatus_author">Author: Gustavo Adami</string>
-
 
 
 </resources>

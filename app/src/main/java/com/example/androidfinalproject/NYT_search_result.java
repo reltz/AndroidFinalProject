@@ -12,19 +12,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.support.design.widget.Snackbar;
 import android.widget.ProgressBar;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -34,67 +28,43 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Class that defines the Main activity for the New York Times Feed
- * Author: Rodrigo Eltz
- * Date: April 2019
- * Version: 2.0
- **/
-public class NYTimes_MainActivity extends AppCompatActivity {
-
+public class NYT_search_result extends AppCompatActivity {
     private Button goBack;
-    private Button search;
-    private EditText typeSearch;
     private ListView nyFeed;
     private ProgressBar progress;
     private List<Article> newsList;
     private Toolbar helpBar;
-
-//NY times milestone 2
+    private String term;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nytimes_activity_main);
+        setContentView(R.layout.nyt_search_result);
+        // gets the search term from previous activity
+
+        Intent current = getIntent();
+        term = current.getStringExtra("term");
+        Log.e("searchTerm",term);
+
         goBack = findViewById(R.id.nyBackButton);
-        //typeSearch = findViewById(R.id.nyTypeSearch);
-        search = findViewById(R.id.nySearchButton);
-        nyFeed = findViewById(R.id.listView);
-        progress = findViewById(R.id.indeterminateBar);
+        newsList = new ArrayList<>();
+        progress = findViewById(R.id.searchProgress);
         helpBar = findViewById(R.id.nyToolbarHelp);
-        typeSearch = findViewById(R.id.nyTypeSearch);
+        nyFeed = findViewById(R.id.listView2);
         setSupportActionBar(helpBar);
 
-
-
-        // Set progress bar to visible
+        //temporarelly invisible
         progress.setVisibility(View.VISIBLE);
 
-        goBack.setOnClickListener(a -> {
-            Snackbar sb = Snackbar.make(goBack, "Go Back?", Snackbar.LENGTH_LONG);
-            sb.setAction("Confirm!", b -> finish());
-            sb.show();
+        goBack.setOnClickListener(b -> {
+            finish();
         });
 
-        search.setOnClickListener(a-> {
-            String term = typeSearch.getText().toString();
-            Intent goSearch = new Intent(NYTimes_MainActivity.this,NYT_search_result.class);
-            goSearch.putExtra("term",term);
-            startActivity(goSearch);
-
-        });
-
-
-
-        newsList = new ArrayList<>();
-        Log.e("status", "Created news array list");
-
-        //newsList.add(new Article("test1", "empty", 0));
+        //FETCH DATA!
         DataFetcher networkThread = new DataFetcher();
-        Log.e("status", "created datafetcher thread");
-        //starts background thread
+        Log.e("status","created datafetcher thread");
         networkThread.execute();
-        Log.e("status", "executed thread");
+        Log.e("status","executed thread");
 
         nyFeed.setClickable(true);
         nyFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -102,7 +72,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent nextArticle = new Intent(NYTimes_MainActivity.this, FullArticle.class);
+                Intent nextArticle = new Intent(NYT_search_result.this, FullArticle.class);
                 nextArticle.putExtra("title", newsList.get(position).getTitle());
                 nextArticle.putExtra("body", newsList.get(position).getBody());
                 nextArticle.putExtra("link", newsList.get(position).getLink());
@@ -117,9 +87,9 @@ public class NYTimes_MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        Log.e("menu","got inflater");
+        Log.e("menu", "got inflater");
         inflater.inflate(R.menu.nytimes_menu, menu);
-        Log.e("menu","inflated menu!");
+        Log.e("menu", "inflated menu!");
         return true;
     }
 
@@ -130,17 +100,13 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 alertNytHelp();
                 break;
             case R.id.nytAllSaved:
-                Intent goSavedNow = new Intent(NYTimes_MainActivity.this, NYT_savedArticles.class);
+                Intent goSavedNow = new Intent(NYT_search_result.this, NYT_savedArticles.class);
                 startActivity(goSavedNow);
                 break;
         }
         return true;
     }
 
-    /**
-     * Method that creates a dialog box for when the menu help is clicked
-     * Describes the author, version and instructions on how to use the app
-     */
     public void alertNytHelp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.nyAlertHelp).setPositiveButton(R.string.nyUnderstood, new DialogInterface.OnClickListener() {
@@ -153,12 +119,6 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-
-
-
-    /**
-     * Private class DataFetcher - retrieves data in json format from NYTimes web server api
-     **/
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private List<Article> news = new ArrayList<>();
 
@@ -169,7 +129,9 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
                 //JSON
                 // URL
-                URL jurl = new URL("https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=6Y1zFdkuCRAVyJAQBwhgB9x3Dgw1F5JA");
+                String urlWithTerm = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + term + "&api-key=6Y1zFdkuCRAVyJAQBwhgB9x3Dgw1F5JA";
+                Log.e("JsonLink",urlWithTerm);
+                URL jurl = new URL(urlWithTerm);
                 HttpURLConnection jurlConnection = (HttpURLConnection) jurl.openConnection();
                 InputStream inStream = jurlConnection.getInputStream();
 
@@ -185,17 +147,27 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
                 //now a json table
                 JSONObject jObject = new JSONObject(result);
-                JSONArray results = jObject.getJSONArray("results");
+                JSONObject searchResults = jObject.getJSONObject("response");
+                Log.e("status","got Jsonobject response");
+                JSONArray results = searchResults.getJSONArray("docs");
+                Log.e("status","Got jsonArray docs");
                 for (int index = 0; index < results.length(); index++) {
+                        JSONObject headline = results.getJSONObject(index).getJSONObject("headline");
+                        String mainTitle = headline.getString("main");
+                        String theLink = results.getJSONObject(index).getString("web_url");
+                        String mainText = results.getJSONObject(index).getString("lead_paragraph");
+                        JSONArray images = results.getJSONObject(index).getJSONArray("multimedia");
+                        boolean noImages = images.isNull(0);
+                        String imageLink="https://static01.nyt.com/";
+                        if (!noImages) {
+                            imageLink += images.getJSONObject(1).getString("url");
+                            Log.e("hasImage","yes");
+                        }
+                        news.add(new Article(mainTitle,mainText,theLink,imageLink,index));
+                                Log.e("status articles","loaded article");
+                        Log.e("image link is",imageLink);
 
-                    //this check if multimedia array is there (some articles dont have images, or are not actual articles)
-                    if (results.getJSONObject(index).has("multimedia") && results.getJSONObject(index).get("multimedia") instanceof JSONArray) {
-                        news.add(new Article(results.getJSONObject(index).getString("title"),
-                                results.getJSONObject(index).getString("abstract"), results.getJSONObject(index).getString("url"),
-                                results.getJSONObject(index).getJSONArray("multimedia").getJSONObject(2).getString("url"), index));
-                    }
-
-                }
+                                           }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -224,6 +196,4 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             Log.e("status:", "done with postExecute");
         }
     }
-
-
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+    <requestFocus/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/nyToolbarHelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/greenBack"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        />
+
+
+    <TextView
+        android:id="@+id/searchTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nyToolbarHelp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_weight="1"
+        android:minHeight="50dp"
+        android:textSize="30sp"
+        android:layout_centerVertical="true"
+        android:text="@string/searchTitle"
+
+        />
+
+    <ListView
+        android:id="@+id/listView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stackFromBottom="false"
+        android:transcriptMode="alwaysScroll"
+        android:layout_below="@id/searchTitle"
+        android:layout_above="@id/innerLayout"
+        android:layout_alignBottom="@id/innerLayout"
+        />
+
+
+
+    <ProgressBar
+        android:layout_centerVertical="true"
+        android:id="@+id/searchProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="invisible"/>
+
+
+
+        <Button
+            android:id="@+id/nyBackButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="@string/nyBack"
+            android:layout_alignParentBottom="true"/>
+
+
+
+
+
+
+</RelativeLayout>
