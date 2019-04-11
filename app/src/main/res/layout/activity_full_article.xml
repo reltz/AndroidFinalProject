@@ -48,7 +48,7 @@
         android:id="@+id/nyImageArticle"
         android:layout_gravity="center"
         android:layout_below="@id/nyArticleLink"
-        android:layout_above="@id/nyButtonSave"
+
         />
 
     <Button
