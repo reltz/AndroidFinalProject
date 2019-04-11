@@ -67,7 +67,7 @@ public class FullArticle extends AppCompatActivity {
             db.insertData(myTitle,myBody,linkText,imageLink);
             Log.e("db state","article saved!");
 
-            Toast.makeText(getApplicationContext(), "Article saved!",
+            Toast.makeText(getApplicationContext(), R.string.NYTsaved,
                     Toast.LENGTH_LONG).show();
         });
     }

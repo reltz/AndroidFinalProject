@@ -4,6 +4,9 @@
     <string name="nysearch">Search</string>
     <string name="nyBack">Go back</string>
     <string name="nythelp">Help</string>
+    <string name="confirm">CONFIRM!</string>
+    <string name="NYTsaved">Article saved</string>
+    <string name="NYTdeleted">Article Deleted</string>
     <string name="nyUnderstood">Understood</string>
     <string name="nyAlertHelp">"Author: Rodrigo Eltz \n Version: 1.0
                 \n\n Instructions: This app shows a list of latest New York Times Article. You can select one to read and save to your favorites, as well as search for articles using the search box."</string>

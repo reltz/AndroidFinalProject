@@ -71,7 +71,7 @@ public class FullArticleSaved extends AppCompatActivity {
                 boolean del = db.deleteData(articleID);
 
                 if (del == true) {
-                    Toast.makeText(getApplicationContext(), "Article deleted",
+                    Toast.makeText(getApplicationContext(), R.string.NYTdeleted,
                             Toast.LENGTH_LONG).show();
                     Log.e("status of db", "article deleted!");
 

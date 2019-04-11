@@ -73,8 +73,8 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         progress.setVisibility(View.VISIBLE);
 
         goBack.setOnClickListener(a -> {
-            Snackbar sb = Snackbar.make(goBack, "Go Back?", Snackbar.LENGTH_LONG);
-            sb.setAction("Confirm!", b -> finish());
+            Snackbar sb = Snackbar.make(goBack, R.string.nyBack, Snackbar.LENGTH_LONG);
+            sb.setAction(R.string.confirm, b -> finish());
             sb.show();
         });
 
@@ -111,10 +111,7 @@ public class NYTimes_MainActivity extends AppCompatActivity {
                 dataToPass.putString("body", newsList.get(position).getBody());
                 dataToPass.putString("link", newsList.get(position).getLink());
                 dataToPass.putString("imageLink", newsList.get(position).getImageLink());
-//                nextArticle.putExtra("title", newsList.get(position).getTitle());
-//                nextArticle.putExtra("body", newsList.get(position).getBody());
-//                nextArticle.putExtra("link", newsList.get(position).getLink());
-//                nextArticle.putExtra("imageLink", newsList.get(position).getImageLink());
+
 
                 nextArticle.putExtras(dataToPass);
                 startActivity(nextArticle);
