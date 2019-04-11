@@ -1,7 +1,9 @@
 package com.example.androidfinalproject;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -41,7 +43,7 @@ import java.util.List;
  * Version: 2.0
  **/
 public class NYTimes_MainActivity extends AppCompatActivity {
-
+    private SharedPreferences sp;
     private Button goBack;
     private Button search;
     private EditText typeSearch;
@@ -57,14 +59,14 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nytimes_activity_main);
         goBack = findViewById(R.id.nyBackButton);
-        //typeSearch = findViewById(R.id.nyTypeSearch);
         search = findViewById(R.id.nySearchButton);
         nyFeed = findViewById(R.id.listView);
         progress = findViewById(R.id.indeterminateBar);
         helpBar = findViewById(R.id.nyToolbarHelp);
         typeSearch = findViewById(R.id.nyTypeSearch);
         setSupportActionBar(helpBar);
-
+        sp = getSharedPreferences("fileName", Context.MODE_PRIVATE);
+        this.loadSearchTerm();
 
 
         // Set progress bar to visible
@@ -76,14 +78,13 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             sb.show();
         });
 
-        search.setOnClickListener(a-> {
+        search.setOnClickListener(a -> {
             String term = typeSearch.getText().toString();
-            Intent goSearch = new Intent(NYTimes_MainActivity.this,NYT_search_result.class);
-            goSearch.putExtra("term",term);
+            Intent goSearch = new Intent(NYTimes_MainActivity.this, NYT_search_result.class);
+            goSearch.putExtra("term", term);
             startActivity(goSearch);
 
         });
-
 
 
         newsList = new ArrayList<>();
@@ -114,12 +115,45 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * Override onPause with the saveSearchTerm method, which saves in shared preferences object the term that was searched last.
+     */
+    protected void onPause() {
+        super.onPause();
+        this.saveSearchTerm();
+    }
+
+    protected void saveSearchTerm() {
+        //EditText term = findViewById(R.id.nyTypeSearch);
+        String whatWasTyped = typeSearch.getText().toString();
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("savedTerm", whatWasTyped);
+        editor.commit();
+    }
+
+    /**
+     * Method that loads the last search term to the editText widget.
+     */
+    protected void loadSearchTerm() {
+        String saved = sp.getString("savedTerm", "");
+        //EditText typeSearch = findViewById(R.id.nyTypeSearch);
+        typeSearch.setText(saved);
+    }
+
+
+    /**
+     * Methor that inflates the Menu for the toolbar
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        Log.e("menu","got inflater");
+        Log.e("menu", "got inflater");
         inflater.inflate(R.menu.nytimes_menu, menu);
-        Log.e("menu","inflated menu!");
+        Log.e("menu", "inflated menu!");
         return true;
     }
 
@@ -152,8 +186,6 @@ public class NYTimes_MainActivity extends AppCompatActivity {
 
         builder.create().show();
     }
-
-
 
 
     /**
