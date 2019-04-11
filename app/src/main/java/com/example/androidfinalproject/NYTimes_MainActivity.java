@@ -104,11 +104,19 @@ public class NYTimes_MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent nextArticle = new Intent(NYTimes_MainActivity.this, FullArticle.class);
-                nextArticle.putExtra("title", newsList.get(position).getTitle());
-                nextArticle.putExtra("body", newsList.get(position).getBody());
-                nextArticle.putExtra("link", newsList.get(position).getLink());
-                nextArticle.putExtra("imageLink", newsList.get(position).getImageLink());
 
+
+                Bundle dataToPass = new Bundle();
+                dataToPass.putString("title",newsList.get(position).getTitle());
+                dataToPass.putString("body", newsList.get(position).getBody());
+                dataToPass.putString("link", newsList.get(position).getLink());
+                dataToPass.putString("imageLink", newsList.get(position).getImageLink());
+//                nextArticle.putExtra("title", newsList.get(position).getTitle());
+//                nextArticle.putExtra("body", newsList.get(position).getBody());
+//                nextArticle.putExtra("link", newsList.get(position).getLink());
+//                nextArticle.putExtra("imageLink", newsList.get(position).getImageLink());
+
+                nextArticle.putExtras(dataToPass);
                 startActivity(nextArticle);
 
             }

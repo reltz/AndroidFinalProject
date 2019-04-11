@@ -44,7 +44,7 @@
         android:stackFromBottom="false"
         android:transcriptMode="alwaysScroll"
         android:layout_below="@id/searchTitle"
-        android:layout_above="@id/innerLayout"
+        android:layout_above="@id/nyBackButton"
         android:layout_alignBottom="@id/innerLayout"
         />
 

@@ -48,11 +48,12 @@ public class FullArticle extends AppCompatActivity {
         db = new NYT_DataBase(this);
 
 
-        Intent i = getIntent();
-        String myTitle = i.getStringExtra("title");
-        String myBody = i.getStringExtra("body");
-        String linkText = i.getStringExtra("link");
-        String imageLink = i.getStringExtra("imageLink");
+        Bundle data = getIntent().getExtras();
+        String myTitle = data.getString("title");
+
+        String myBody = data.getString("body");
+        String linkText = data.getString("link");
+        String imageLink = data.getString("imageLink");
         title.setText(myTitle);
         body.setText(myBody);
         link.setText(linkText);

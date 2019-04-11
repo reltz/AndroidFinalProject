@@ -33,7 +33,7 @@ public class NYT_savedArticles extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nyt_saved_articles);
-        helpBar=findViewById(R.id.nyToolbarHelp3);
+        helpBar = findViewById(R.id.nyToolbarHelp3);
         setSupportActionBar(helpBar);
         savedArticles = findViewById(R.id.listViewSaved);
         myArticles = new ArrayList<>();
@@ -41,12 +41,12 @@ public class NYT_savedArticles extends AppCompatActivity {
 
         goBack = findViewById(R.id.nytBack);
 
-        goBack.setOnClickListener(b-> {
+        goBack.setOnClickListener(b -> {
             Intent goFeed = new Intent(NYT_savedArticles.this, NYTimes_MainActivity.class);
             startActivity(goFeed);
         });
         viewData();
-        if (myArticles.size()==0) {
+        if (myArticles.size() == 0) {
             alertEmpty();
         }
         savedArticles.setClickable(true);
@@ -60,9 +60,12 @@ public class NYT_savedArticles extends AppCompatActivity {
                 nextArticle.putExtra("body", myArticles.get(position).getBody());
                 nextArticle.putExtra("link", myArticles.get(position).getLink());
                 nextArticle.putExtra("imageLink", myArticles.get(position).getImageLink());
-                nextArticle.putExtra("id",myArticles.get(position).getNewsID());
-                startActivity(nextArticle);
+                nextArticle.putExtra("id", myArticles.get(position).getNewsID());
 
+
+                //TRYING SOMETHING
+                // startActivity(nextArticle);
+                startActivityForResult(nextArticle, 12);
             }
         });
 
@@ -83,25 +86,39 @@ public class NYT_savedArticles extends AppCompatActivity {
 
     public void viewData() {
         Cursor cursor = db.viewData();
-        if (cursor.getCount()!=0) {
-            while(cursor.moveToNext()) {
-                Article article = new Article(cursor.getString(1),cursor.getString(2),
-                        cursor.getString(3),cursor.getString(4),cursor.getInt(0));
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
+                Article article = new Article(cursor.getString(1), cursor.getString(2),
+                        cursor.getString(3), cursor.getString(4), cursor.getInt(0));
                 myArticles.add(article);
-                Log.e("view status","article added to list");
+                Log.e("view status", "article added to list");
             }
-            adapter = new ArticleAdapter(myArticles,this);
+            adapter = new ArticleAdapter(myArticles, this);
+
             savedArticles.setAdapter(adapter);
-            Log.e("status","adapter set!");
+            Log.e("status", "adapter set!");
         }
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("activityResultCalled", "yes");
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 12) {
+                Log.e("resquestCorrect", "12Yes");
+                adapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        Log.e("menu","got inflater");
+        Log.e("menu", "got inflater");
         inflater.inflate(R.menu.nytimes_menu, menu);
-        Log.e("menu","inflated menu!");
+        Log.e("menu", "inflated menu!");
         return true;
     }
 

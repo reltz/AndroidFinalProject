@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -60,8 +61,10 @@ public class FullArticleSaved extends AppCompatActivity {
         link.setText(linkText);
 
 
-        DataFetcher networkThread = new DataFetcher();
-        networkThread.execute(imageLink);
+        if (!imageLink.equals("")) {
+            DataFetcher networkThread = new DataFetcher();
+            networkThread.execute(imageLink);
+        }
 
         deleteArticle.setOnClickListener(b -> {
             try {
@@ -75,9 +78,10 @@ public class FullArticleSaved extends AppCompatActivity {
                 } else {
                     Log.e("status of db", "article was not deleted");
                 }
-                Intent intent = getIntent();
-                intent.putExtra("key", "refreshIt");
-                setResult(RESULT_OK, intent);
+
+                Intent intend = new Intent();
+                setResult(RESULT_OK,intend);
+
                 finish();
 
             } catch (Exception e) {
@@ -85,6 +89,12 @@ public class FullArticleSaved extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

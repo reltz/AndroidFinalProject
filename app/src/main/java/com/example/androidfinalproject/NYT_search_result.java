@@ -46,6 +46,9 @@ public class NYT_search_result extends AppCompatActivity {
         term = current.getStringExtra("term");
         Log.e("searchTerm",term);
 
+        //check if tablet
+        boolean isTablet = findViewById(R.id.nyt_frame)!=null;
+
         goBack = findViewById(R.id.nyBackButton);
         newsList = new ArrayList<>();
         progress = findViewById(R.id.searchProgress);
@@ -73,12 +76,34 @@ public class NYT_search_result extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent nextArticle = new Intent(NYT_search_result.this, FullArticle.class);
-                nextArticle.putExtra("title", newsList.get(position).getTitle());
-                nextArticle.putExtra("body", newsList.get(position).getBody());
-                nextArticle.putExtra("link", newsList.get(position).getLink());
-                nextArticle.putExtra("imageLink", newsList.get(position).getImageLink());
+                Bundle dataToPass = new Bundle();
+                dataToPass.putString("title",newsList.get(position).getTitle());
+                dataToPass.putString("body", newsList.get(position).getBody());
+                dataToPass.putString("link", newsList.get(position).getLink());
+                dataToPass.putString("imageLink", newsList.get(position).getImageLink());
 
-                startActivity(nextArticle);
+
+
+//                nextArticle.putExtra("title", newsList.get(position).getTitle());
+//                nextArticle.putExtra("body", newsList.get(position).getBody());
+//                nextArticle.putExtra("link", newsList.get(position).getLink());
+//                nextArticle.putExtra("imageLink", newsList.get(position).getImageLink());
+
+                if (isTablet) {
+
+                    Log.e("isTablet","yes!");
+                    NYTfragment nfrag = new NYTfragment();
+                    nfrag.setArguments(dataToPass);
+                    nfrag.setTablet(true);
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.nyt_frame, nfrag)
+                            .addToBackStack(("anyName"))
+                            .commit();
+                } else {
+                    nextArticle.putExtras(dataToPass);
+                    startActivity(nextArticle);
+                }
+
 
             }
         });
