@@ -7,10 +7,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * Database auxiliary class to handle the saved articles database: NYT_Saved_Articles
+ * @author Rodrigo Eltz
+ * @since 10-04-2019
+ */
 public class NYT_DataBase extends SQLiteOpenHelper {
-    private static final String DB_NAME = "NYT Saved Articles";
+    private static final String DB_NAME = "NYT_Saved_Articles";
 
-    //table
+    /**
+     * Generates table
+     */
     private static final String DB_TABLE = "savedArticles";
 
     //Columns
@@ -41,7 +48,14 @@ public class NYT_DataBase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
+    /**
+     * Method that handdles insertion to the database and returns 1 if inserted, else -1.
+     * @param title
+     * @param articleAbstract
+     * @param link
+     * @param imageLink
+     * @return
+     */
     public boolean insertData(String title, String articleAbstract, String link, String imageLink) {
         long result = -1;
         try {
@@ -60,6 +74,11 @@ public class NYT_DataBase extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    /**
+     * Method that handles deletion of data from the database and returns 1 if deleted, else -1.
+     * @param ID
+     * @return
+     */
     public boolean deleteData(int ID) {
         long result = -1;
         try {
@@ -75,6 +94,11 @@ public class NYT_DataBase extends SQLiteOpenHelper {
 
     }
 
+
+    /**
+     * Cursor to retrieve data from database and render it
+     * @return
+     */
     public Cursor viewData() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + DB_TABLE;

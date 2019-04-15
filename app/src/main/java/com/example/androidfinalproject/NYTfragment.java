@@ -12,7 +12,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/**
+ * Class that defines the fragment version, for when search activity runs on a tablet
+ * @author Rodrigo Eltz
+ * @since 10-04-2019
+ * @version  2.0
+ **/
 public class NYTfragment extends Fragment {
     private boolean isTablet;
     private Bundle dataFromActivity;

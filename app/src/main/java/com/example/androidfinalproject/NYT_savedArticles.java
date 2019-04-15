@@ -20,6 +20,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity with the list of saved articles. Retrieves list from articles saved on local database
+ * @author Rodrigo Eltz
+ * @since 10-04-2019
+ */
 public class NYT_savedArticles extends AppCompatActivity {
     private Toolbar helpBar;
     private Button goBack;
@@ -65,13 +70,16 @@ public class NYT_savedArticles extends AppCompatActivity {
 
                 //TRYING SOMETHING
                 // startActivity(nextArticle);
-                startActivityForResult(nextArticle, 12);
+                startActivityForResult(nextArticle, 1);
             }
         });
 
 
     }
 
+    /**
+     * Method that creates dialog box to alert user that saved articles database is empty
+     */
     public void alertEmpty() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.emptyList).setPositiveButton(R.string.nyUnderstood, new DialogInterface.OnClickListener() {
@@ -84,6 +92,9 @@ public class NYT_savedArticles extends AppCompatActivity {
         builder.create().show();
     }
 
+    /**
+     * Method that retrieves the articles from database and renders it into a listview
+     */
     public void viewData() {
         Cursor cursor = db.viewData();
         if (cursor.getCount() != 0) {
@@ -105,9 +116,13 @@ public class NYT_savedArticles extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         Log.e("activityResultCalled", "yes");
         if (resultCode == RESULT_OK) {
-            if (requestCode == 12) {
-                Log.e("resquestCorrect", "12Yes");
-                adapter.notifyDataSetChanged();
+            if (requestCode == 1) {
+//                Log.e("resquestCorrect", "12Yes");
+//                int deleteID = data.getIntExtra("idDeleted", -1);
+//                if (deleteID >= 0) {
+//                    myArticles.remove(deleteID);
+//                    adapter.notifyDataSetChanged();
+//                }
             }
         }
     }

@@ -25,6 +25,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Activity that shows the Full Article, once it was clicked in the listview
+ * @author Rodrigo Eltz
+ * @since 10-04-2019
+ */
 public class FullArticle extends AppCompatActivity {
     private TextView title;
     private TextView body;
@@ -58,8 +63,10 @@ public class FullArticle extends AppCompatActivity {
         body.setText(myBody);
         link.setText(linkText);
 
-       
 
+/**
+ * Assync task to retrieve the Bitmap image from the image link saved on the object Article
+ **/
         DataFetcher networkThread = new DataFetcher();
         networkThread.execute(imageLink);
 
@@ -72,6 +79,11 @@ public class FullArticle extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that inflates the Menu on the toolbar
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -111,7 +123,9 @@ public class FullArticle extends AppCompatActivity {
         builder.create().show();
     }
 
-
+    /**
+     * Inner class that fetches the Bitmap image from the image link and renders it
+     */
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private Bitmap myImage = null;
         private URL url = null;

@@ -28,6 +28,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity that shows a listview with the result from the search term.
+ * Uses search Rest API from New York Times
+ * @author Rodrigo Eltz
+ * @since 10-04-2019
+ */
 public class NYT_search_result extends AppCompatActivity {
     private Button goBack;
     private ListView nyFeed;
@@ -83,12 +89,6 @@ public class NYT_search_result extends AppCompatActivity {
                 dataToPass.putString("imageLink", newsList.get(position).getImageLink());
 
 
-
-//                nextArticle.putExtra("title", newsList.get(position).getTitle());
-//                nextArticle.putExtra("body", newsList.get(position).getBody());
-//                nextArticle.putExtra("link", newsList.get(position).getLink());
-//                nextArticle.putExtra("imageLink", newsList.get(position).getImageLink());
-
                 if (isTablet) {
 
                     Log.e("isTablet","yes!");
@@ -109,6 +109,11 @@ public class NYT_search_result extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that inflates the menu into toolbar
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -132,6 +137,7 @@ public class NYT_search_result extends AppCompatActivity {
         return true;
     }
 
+
     public void alertNytHelp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.nyAlertHelp).setPositiveButton(R.string.nyUnderstood, new DialogInterface.OnClickListener() {
@@ -144,6 +150,11 @@ public class NYT_search_result extends AppCompatActivity {
         builder.create().show();
     }
 
+    /**
+     * Inner class that retrieves a list of NYTimes articles from the Search term typed by the user.
+     * Uses REST API from New York Times
+     *
+     */
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private List<Article> news = new ArrayList<>();
 

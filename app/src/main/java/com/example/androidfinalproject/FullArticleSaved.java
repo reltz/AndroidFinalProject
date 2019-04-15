@@ -24,6 +24,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Activity that opens when a saved article is clicked from the saved articles listview
+ * Difference from the FullArticle activity is that this has the button delete to remove article from database
+ * @author Rodrigo Eltz
+ * @since 10-04-2019
+ */
 public class FullArticleSaved extends AppCompatActivity {
     private TextView title;
     private TextView body;
@@ -79,9 +85,6 @@ public class FullArticleSaved extends AppCompatActivity {
                     Log.e("status of db", "article was not deleted");
                 }
 
-                Intent intend = new Intent();
-                setResult(RESULT_OK,intend);
-
                 finish();
 
             } catch (Exception e) {
@@ -97,6 +100,11 @@ public class FullArticleSaved extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /** Inflates the menu for the toolbar
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -137,6 +145,9 @@ public class FullArticleSaved extends AppCompatActivity {
     }
 
 
+    /**
+     * Inner class that fetches and renders the BitMap image from the image link saved on the article
+     */
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private Bitmap myImage = null;
         private URL url = null;

@@ -1,5 +1,10 @@
 package com.example.androidfinalproject;
 
+/**
+ * Class that defines the Article object, containing title, abstract, link, link of the image and articleID
+ * @author Rodrigo Eltz
+ * @since April 2019
+ */
 public class Article {
     private String title;
     private String body;

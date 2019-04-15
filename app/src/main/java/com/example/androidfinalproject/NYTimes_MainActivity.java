@@ -38,9 +38,9 @@ import java.util.List;
 
 /**
  * Class that defines the Main activity for the New York Times Feed
- * Author: Rodrigo Eltz
- * Date: April 2019
- * Version: 2.0
+ * @author Rodrigo Eltz
+ * @since 10-04-2019
+ * @version  2.0
  **/
 public class NYTimes_MainActivity extends AppCompatActivity {
     private SharedPreferences sp;
