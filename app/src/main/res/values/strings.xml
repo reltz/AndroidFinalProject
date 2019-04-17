@@ -37,6 +37,21 @@
     <string name="flightstatus_version">Activity Version: 2</string>
     <string name="flightstatus_author">Author: Gustavo Adami</string>
 
-    
 
+
+    <string name="dictSearchEditTextHint">Type Word</string>
+    <string name="dictSearchBtn">Search</string>
+    <string name="titlePlaceHolder">Loading Title..</string>
+    <string name="definitionPlaceHolder">Loading Definition..</string>
+    <string name="dictSave">Save Word</string>
+    <string name="goToDict">Go To Dictionary</string>
+    <string name="dictDelete">Delete word</string>
+    <string name="dictSaved">Word Saved!</string>
+    <string name="dictDeleted">Word Deleted!</string>
+    <string name="dictDelSnackBar">Are you sure wou want to delete?</string>
+    <string name="dictGoHome">Want to go to home activity?</string>
+    <string name="dictShortAbout">Author: Raphael Guerra Version: 1.0</string>
+    <string name="dictAbout">Author: Raphael Guerra \n Version number: 1.0 \n Instructions: Type the word you want to search for definitions and hit search button. Clicking in an item from the list shows its definition saved locally.</string>
+    <string name="dictPositive">Yes</string>
+    <string name="dictNegative">No</string>
 </resources>

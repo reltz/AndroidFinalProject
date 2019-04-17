@@ -29,6 +29,9 @@
 
         </activity>
         <activity android:name=".NewsFeed_Detail" />
+        <activity android:name=".Dictionary_MainActivity"></activity>
+        <activity android:name=".Dictionary_SearchActivity"></activity>
+        <activity android:name=".Dictionary_Element"></activity>
     </application>
 
 </manifest>

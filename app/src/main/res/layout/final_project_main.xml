@@ -35,5 +35,11 @@
         android:layout_height="wrap_content"
         android:text="Go to Ney York Times"/>
 
+        <Button
+            android:id="@+id/goToDictionary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/goToDict"/>
+
     </LinearLayout>
 </LinearLayout>
