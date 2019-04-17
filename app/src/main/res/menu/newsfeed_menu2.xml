@@ -6,7 +6,13 @@
         android:id="@+id/newsFeedBack"
         android:icon="@drawable/back_icon"
         android:title="Newsfeed"
-        android:orderInCategory="20"
+        android:orderInCategory="2"
+        app:showAsAction="always"></item>
+    <item
+        android:id="@+id/newsFeedHelp"
+        android:icon="@drawable/nythelp"
+        android:title="NewsfeedHelp"
+        android:orderInCategory="1"
         app:showAsAction="always"></item>
 
 </menu>

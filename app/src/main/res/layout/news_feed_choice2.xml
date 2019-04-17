@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <Button
+        android:id="@+id/openNews2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open Article"
+        tools:textAlignment="center" />
+
+    <Button
+        android:id="@+id/deleteNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/openNews2"
+        android:text="Delete Article"
+        tools:textAlignment="center" />
+
+    <Button
+        android:id="@+id/newsCancelBtn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/deleteNews"
+        android:text="Cancel"
+        tools:textAlignment="center" />
+
+
+</RelativeLayout>

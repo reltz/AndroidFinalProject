@@ -1,11 +1,14 @@
 package com.example.androidfinalproject;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.androidfinalproject.NewsFeed;
+import com.example.androidfinalproject.R;
 
 import java.util.List;
 
@@ -34,31 +37,29 @@ public class NewsFeed_Adapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (news.get(position) != null) {
-            convertView = inflater.inflate(R.layout.activity_news_feed_search, null);
-        }
-
-        TextView messageText = convertView.findViewById(R.id.newsFeedItem);
-        messageText.setText(news.get(position).getNewsTitle());
-        return convertView;
-
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
 //        TextView root = (TextView) convertView;
-//        if (convertView== null) {
-//            root = (TextView) inflater.inflate(R.layout.activity_news_feed__detail,parent,false);
+//        if (convertView == null) {
+//            root = (TextView) inflater.inflate(R.layout.activity_news_feed_search, parent, false);
 //        }
 //
 //        String toDisplay = news.get(position).getNewsTitle();
 //
 //        root.setText(toDisplay);
 //        return root;
-//        if (news.get(position).isClicked()) {
-//            convertView = inflater.inflate(R.layout.activity_news_feed_search, null);
-//        }
-//        TextView messageText = convertView.findViewById(R.id.newsFeedItem);
-//        messageText.setText(news.get(position).getNewsTitle());
-//        return convertView;
+//    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (news.get(position) != null) {
+            convertView = inflater.inflate(R.layout.activity_news_feed_search, null);
+        }
+        TextView messageText = convertView.findViewById(R.id.newsFeedItem);
+        messageText.setText(news.get(position).getNewsTitle());
+        return convertView;
     }
+
 }
