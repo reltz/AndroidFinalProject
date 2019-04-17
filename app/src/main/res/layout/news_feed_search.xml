@@ -11,13 +11,13 @@
         android:background="@color/colorPrimary"/>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/SearchprogressBar"
         android:layout_width="match_parent"
         android:layout_centerInParent="true"
         android:layout_height="30dp" />
 
     <ListView
-        android:id="@+id/newsView"
+        android:id="@+id/newsLView"
         android:layout_width="wrap_content"
         android:layout_below="@+id/newsFeed_toolbar"
         android:layout_height="wrap_content"></ListView>

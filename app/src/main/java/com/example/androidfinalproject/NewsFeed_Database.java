@@ -9,8 +9,8 @@ import android.util.Log;
 
 /**
  * Database auxiliary class to handle the saved articles database: NYT_Saved_Articles
- * @author Rodrigo Eltz
- * @since 10-04-2019
+ * @author Felipe Magnago
+ * @since 17-04-2019
  */
 public class NewsFeed_Database extends SQLiteOpenHelper {
     private static final String DB_NAME = "NewsFeed_SavedArticles";

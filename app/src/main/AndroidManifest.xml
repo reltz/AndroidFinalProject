@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewsFeed_Saved"></activity>
+        <activity android:name=".NewsFeed_Search"></activity>
+        <activity android:name=".NewsFeed_Saved" />
         <activity android:name=".NewsFeed_Star" />
         <activity android:name=".FlightStatusFlightInformation" />
         <activity android:name=".FlightStatusHome" />

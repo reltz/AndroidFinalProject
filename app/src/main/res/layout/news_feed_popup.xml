@@ -11,7 +11,7 @@
         android:id="@+id/goToSaved"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go To Saved News"
+        android:text="@string/goToSaved"
         tools:textAlignment="center" />
 
     <Button
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/goToSaved"
-        android:text="Cancel"
+        android:text="@string/Cancel"
         tools:textAlignment="center" />
 
 

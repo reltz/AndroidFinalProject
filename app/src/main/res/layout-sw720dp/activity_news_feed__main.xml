@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/newsFeedET"
         android:layout_below="@+id/newsFeed_toolbar"
-        android:text="Search" />
+        android:text="@string/nysearch" />
 
     <EditText
         android:id="@+id/newsFeedET"

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name"> Projeto Final de Android</string>
-
+    <string name="newsHelp">"Autor: Felipe Magnago\nVersão: 1\nClique use o botão buscar para procurar por um artigo"</string>
+    <string name="newsYes">Sim</string>
+    <string name="goToSaved">Ir para noticias salvas</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="newsOpen">Abrir noticia</string>
+    <string name="newsDelete">Deletar noticia</string>
+    <string name="newsSave">Salvar noticia</string>
     <string name="nysearch">Buscar</string>
     <string name="nyBack">Voltar</string>
     <string name="nythelp">Ajuda</string>

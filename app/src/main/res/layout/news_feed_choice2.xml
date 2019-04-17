@@ -11,7 +11,7 @@
         android:id="@+id/openNews2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open Article"
+        android:text="@string/newsOpen"
         tools:textAlignment="center" />
 
     <Button
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/openNews2"
-        android:text="Delete Article"
+        android:text="@string/newsDelete"
         tools:textAlignment="center" />
 
     <Button
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/deleteNews"
-        android:text="Cancel"
+        android:text="@string/Cancel"
         tools:textAlignment="center" />
 
 

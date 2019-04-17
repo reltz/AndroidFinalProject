@@ -19,6 +19,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * NewsFeed_Saved_Fragment Class for the News Feed
+ * @author Felipe Magnago
+ * @since 17-04-2019
+ * @version  1.0
+ **/
 public class NewsFeed_Saved_Fragment extends Fragment {
     private Bundle dataFromActivity;
     private NewsFeed_Database db;
@@ -39,7 +45,7 @@ public class NewsFeed_Saved_Fragment extends Fragment {
     public void setTablet(boolean tablet) { isTablet = tablet; }
 
     /**
-     *
+     * Method to get values on the datbase and add them to the listview
      * @param inflater
      * @param container
      * @param savedInstanceState

@@ -2,6 +2,7 @@ package com.example.androidfinalproject;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.design.widget.Snackbar;
@@ -18,7 +19,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * NewsFeed_Saved Class for the News Feed
+ * @author Felipe Magnago
+ * @since 17-04-2019
+ * @version  1.0
+ **/
 public class NewsFeed_Saved extends AppCompatActivity {
     android.support.v7.widget.Toolbar my_Toolbar;
     private ListView newsFeedSavedList;
@@ -76,7 +82,10 @@ public class NewsFeed_Saved extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Cursor to retrieve data from database and render it
+     * @return
+     */
     public void viewData() {
         Log.e("ViewData","Executed!");
         Cursor cursor = db.viewData();
@@ -93,13 +102,23 @@ public class NewsFeed_Saved extends AppCompatActivity {
             Log.e("status", "adapter set!");
         }
     }
-
+    /**
+     * Method that inflates the Menu for the toolbar
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.newsfeed_menu2, menu);
         return true;
     }
-
+    /**
+     * Method that calls the handler for when the menu item is clicked
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //Add more Icons after
@@ -116,7 +135,14 @@ public class NewsFeed_Saved extends AppCompatActivity {
                 sb.show();
                 break;
             case R.id.newsFeedHelp:
-                Toast.makeText(NewsFeed_Saved.this, "NewsFeed App, created by Felipe Magnago", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(R.string.newsHelp).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        builder.create().cancel();
+                    }
+                });
+                builder.create().show();
                 break;
             case R.id.newsFeedMenu:
                 AlertDialog.Builder menuBuilder = new AlertDialog.Builder(NewsFeed_Saved.this);

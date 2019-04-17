@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Android Final Project</string>
-
+    <string name="newsHelp">"Author: Felipe Magnago\nVersion: 1\nClick search to look for your article of interest"</string>
+    <string name="newsYes">Yes</string>
+    <string name="goToSaved">Go To Saved News</string>
+    <string name="Cancel">Cancel</string>
+    <string name="newsOpen">Open Article</string>
+    <string name="newsDelete">Delete Article</string>
+    <string name="newsSave">Save Article</string>
     <string name="nysearch">Search</string>
     <string name="nyBack">Go back</string>
     <string name="nythelp">Help</string>

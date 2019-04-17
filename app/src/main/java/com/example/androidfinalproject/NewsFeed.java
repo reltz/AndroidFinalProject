@@ -1,5 +1,11 @@
 package com.example.androidfinalproject;
 
+/**
+ * NewsFeed Class to holder value for the News Feed
+ * @author Felipe Magnago
+ * @since 17-04-2019
+ * @version  1.0
+ **/
 public class NewsFeed {
 
     private String newsTitle, newsBody, URL, imageURL;
