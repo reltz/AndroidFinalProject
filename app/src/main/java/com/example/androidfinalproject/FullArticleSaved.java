@@ -39,6 +39,8 @@ public class FullArticleSaved extends AppCompatActivity {
     private NYT_DataBase db;
     private Button deleteArticle;
     public static final int REQUEST_CODE = 1;
+    int deletedID=-1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,8 @@ public class FullArticleSaved extends AppCompatActivity {
         String linkText = i.getStringExtra("link");
         String imageLink = i.getStringExtra("imageLink");
         int articleID = i.getIntExtra("id", -1);
+        deletedID=articleID;
+
 
 
         title.setText(myTitle);
@@ -81,11 +85,16 @@ public class FullArticleSaved extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                     Log.e("status of db", "article deleted!");
 
+
                 } else {
                     Log.e("status of db", "article was not deleted");
                 }
 
+                Intent intent = getIntent();
+                intent.putExtra("deletedID", deletedID);
+                setResult(RESULT_OK, intent);
                 finish();
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -94,11 +103,6 @@ public class FullArticleSaved extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 
     /** Inflates the menu for the toolbar
      *

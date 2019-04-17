@@ -18,10 +18,12 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Activity with the list of saved articles. Retrieves list from articles saved on local database
+ *
  * @author Rodrigo Eltz
  * @since 10-04-2019
  */
@@ -117,12 +119,21 @@ public class NYT_savedArticles extends AppCompatActivity {
         Log.e("activityResultCalled", "yes");
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
-//                Log.e("resquestCorrect", "12Yes");
-//                int deleteID = data.getIntExtra("idDeleted", -1);
-//                if (deleteID >= 0) {
-//                    myArticles.remove(deleteID);
-//                    adapter.notifyDataSetChanged();
-//                }
+                Log.e("resquestCorrect", "12Yes");
+                int deleteID = data.getIntExtra("deletedID", -1);
+                if (deleteID >= 0) {
+
+
+                  Article deleteThis=null;
+                    for (Article a: myArticles) {
+                        if (a.getNewsID()==deleteID) {
+                            deleteThis=a;
+                        }
+                    }
+                    myArticles.remove(deleteThis);
+
+                    adapter.notifyDataSetChanged();
+                }
             }
         }
     }
