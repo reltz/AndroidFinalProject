@@ -6,49 +6,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
-
 /**
- * Class that defines the Adapter for the listview, populating it with the NYTimes articles
- * @author Rodrigo Eltz
- * @since April 2019
+ * Adapter class for Dictionary_MainActivity listView
+ * @author Raphael Guerra
+ * 16-04-2019
  **/
-public class ArticleAdapter extends BaseAdapter {
+public class DictionaryAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
-    private List<Article> article;
-
-
+    private List<DictionaryDefinition> wordList;
     /**
-     * Method that constructs the adapter from a List and context
-     * @param news
+     * Constructs the adapter from a List of words and context
+     * @param words
      * @param context
      */
-    public ArticleAdapter(List<Article> news, Context context) {
-        this.article = news;
+    public DictionaryAdapter(List<DictionaryDefinition> words, Context context) {
+        this.wordList = words;
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
     @Override
     public int getCount() {
-        return article.size();
+        return wordList.size();
     }
-
     @Override
     public Object getItem(int position) {
-        return article.get(position);
+        return wordList.get(position);
     }
-
     @Override
     public long getItemId(int position) {
         return position;
     }
-
     /**
-     * Method that renders the View for the listview
+     * Function to inflate views inside the words List
      * @param position
      * @param convertView
      * @param parent
@@ -57,16 +48,12 @@ public class ArticleAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         TextView root = (TextView) convertView;
         if (convertView == null) {
             root = (TextView) inflater.inflate(R.layout.list_item, parent, false);
         }
-
-        String toDisplay = article.get(position).getTitle();
-
+        String toDisplay = wordList.get(position).getTitle();
         root.setText(toDisplay);
         return root;
     }
-
 }

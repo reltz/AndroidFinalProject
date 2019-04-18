@@ -2,5 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:id="@+id/newsFeedBack"
+        android:icon="@drawable/back_icon"
+        android:title="Newsfeed"
+        android:orderInCategory="1"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/newsFeedHelp"
+        android:icon="@drawable/nythelp"
+        android:title="NewsfeedHelp"
+        android:orderInCategory="2"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/newsFeedMenu"
+        android:icon="@drawable/dot_icon"
+        android:title="NewsfeedMenu"
+        android:orderInCategory="3"
+        app:showAsAction="always"></item>
 
 </menu>

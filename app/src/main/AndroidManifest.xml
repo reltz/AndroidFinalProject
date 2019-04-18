@@ -17,10 +17,25 @@
         <activity android:name=".FlightStatusSharedPreferences" />
         <activity android:name=".FlightStatusToolbarMenu" />
         <activity android:name=".FlightStatusArrivalsInformation" />
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+
+
+        <activity android:name=".NewsFeed_Search"></activity>
+        <activity android:name=".NewsFeed_Saved" />
+
+
+        <activity android:name=".NYT_search_result"></activity>
+        <activity android:name=".NYT_savedArticles" />
+
         <activity android:name=".FlightStatusFlightInformation" />
         <activity android:name=".FlightStatusHome" />
         <activity android:name=".NewsFeed_MainActivity" /> <!-- activity android:name=".ArticleSearchList"></activity -->
         <activity android:name=".FullArticle" />
+
+        <activity android:name=".FullArticleSaved" />
+
         <activity android:name=".NYTimes_MainActivity" />
         <activity android:name=".FinalProject_MainActivity">
             <intent-filter>
@@ -30,6 +45,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewsFeed_Detail" />
+        <activity android:name=".Dictionary_MainActivity"></activity>
+        <activity android:name=".Dictionary_SearchActivity"></activity>
+        <activity android:name=".Dictionary_Element"></activity>
     </application>
 
 </manifest>

@@ -10,21 +10,21 @@
 
     <item android:id="@+id/nyTimesBtn"
         android:title="@string/flightStatus_menuBtnHelp"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@drawable/nyt_lgo"
         android:orderInCategory="2"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        />
 
     <item android:id="@+id/newsFeedBtn"
         android:title="@string/flightStatus_menuBtnHelp"
-        android:icon="@android:drawable/ic_menu_help"
+        android:icon="@drawable/news"
         android:orderInCategory="3"
         app:showAsAction="always" />
 
-    <item android:id="@+id/articleSearchBtn"
-        android:icon="@drawable/returnbtn"
-        android:orderInCategory="4"
+
+    <item android:id="@+id/dictionaryBtn"
+        android:icon="@drawable/main_dic"
+        android:orderInCategory="1"
         app:showAsAction="always"
-        android:title="@string/flightStatus_menuBtnReturn" />
-
-
+        android:title="Dictionary" />
 </menu>
