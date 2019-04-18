@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <requestFocus />
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/nyToolbarHelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/greenBack"
+        android:minHeight="?attr/actionBarSize"
+
+        />
+
+
+    <TextView
+        android:id="@+id/searchTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nyToolbarHelp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:minHeight="50dp"
+        android:text="@string/searchTitle"
+        android:textSize="30sp"
+
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/nyBackButton"
+        android:layout_below="@id/searchTitle">
+
+        <ListView
+            android:id="@+id/listView2"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/innerLayout"
+            android:layout_alignBottom="@id/innerLayout"
+            android:stackFromBottom="false"
+            android:transcriptMode="alwaysScroll" />
+
+        <FrameLayout
+            android:id="@+id/nyt_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/listView2"
+             />
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/searchProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="invisible" />
+
+
+    <Button
+        android:id="@+id/nyBackButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/nyBack" />
+
+
+</RelativeLayout>

@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,69 +19,93 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Activity that shows the Full Article, once it was clicked in the listview
+ * Activity that opens when a saved article is clicked from the saved articles listview
+ * Difference from the FullArticle activity is that this has the button delete to remove article from database
  * @author Rodrigo Eltz
  * @since 10-04-2019
  */
-public class FullArticle extends AppCompatActivity {
+public class FullArticleSaved extends AppCompatActivity {
     private TextView title;
     private TextView body;
     private TextView link;
     private ImageView image;
     private Toolbar helpBar;
     private NYT_DataBase db;
-    private Button saveArticle;
+    private Button deleteArticle;
+    public static final int REQUEST_CODE = 1;
+    int deletedID=-1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_article);
+        setContentView(R.layout.nyt_fullarticle_saved);
         title = findViewById(R.id.news_title_detailed);
         body = findViewById(R.id.news_body);
         link = findViewById(R.id.nyArticleLink);
         image = findViewById(R.id.nyImageArticle);
         helpBar = findViewById(R.id.nyToolbarHelp2);
         setSupportActionBar(helpBar);
-        saveArticle = findViewById(R.id.nyButtonSave);
+        deleteArticle = findViewById(R.id.nyButtonDelete);
         db = new NYT_DataBase(this);
 
 
-        Bundle data = getIntent().getExtras();
-        String myTitle = data.getString("title");
+        Intent i = getIntent();
+        String myTitle = i.getStringExtra("title");
+        String myBody = i.getStringExtra("body");
+        String linkText = i.getStringExtra("link");
+        String imageLink = i.getStringExtra("imageLink");
+        int articleID = i.getIntExtra("id", -1);
+        deletedID=articleID;
 
-        String myBody = data.getString("body");
-        String linkText = data.getString("link");
-        String imageLink = data.getString("imageLink");
+
+
         title.setText(myTitle);
         body.setText(myBody);
         link.setText(linkText);
 
 
-/**
- * Assync task to retrieve the Bitmap image from the image link saved on the object Article
- **/
-        DataFetcher networkThread = new DataFetcher();
-        networkThread.execute(imageLink);
+        if (!imageLink.equals("")) {
+            DataFetcher networkThread = new DataFetcher();
+            networkThread.execute(imageLink);
+        }
 
-        saveArticle.setOnClickListener(b-> {
-            db.insertData(myTitle,myBody,linkText,imageLink);
-            Log.e("db state","article saved!");
+        deleteArticle.setOnClickListener(b -> {
+            try {
+                boolean del = db.deleteData(articleID);
 
-            Toast.makeText(getApplicationContext(), R.string.NYTsaved,
-                    Toast.LENGTH_LONG).show();
+                if (del == true) {
+                    Toast.makeText(getApplicationContext(), R.string.NYTdeleted,
+                            Toast.LENGTH_LONG).show();
+                    Log.e("status of db", "article deleted!");
+
+
+                } else {
+                    Log.e("status of db", "article was not deleted");
+                }
+
+                Intent intent = getIntent();
+                intent.putExtra("deletedID", deletedID);
+                setResult(RESULT_OK, intent);
+                finish();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         });
     }
 
-    /**
-     * Method that inflates the Menu on the toolbar
+
+    /** Inflates the menu for the toolbar
+     *
      * @param menu
      * @return
      */
@@ -100,7 +125,7 @@ public class FullArticle extends AppCompatActivity {
                 alertNytHelp();
                 break;
             case R.id.nytAllSaved:
-                Intent goSavedNow = new Intent(FullArticle.this, NYT_savedArticles.class);
+                Intent goSavedNow = new Intent(FullArticleSaved.this, NYT_savedArticles.class);
                 startActivity(goSavedNow);
                 break;
         }
@@ -123,8 +148,9 @@ public class FullArticle extends AppCompatActivity {
         builder.create().show();
     }
 
+
     /**
-     * Inner class that fetches the Bitmap image from the image link and renders it
+     * Inner class that fetches and renders the BitMap image from the image link saved on the article
      */
     private class DataFetcher extends AsyncTask<String, Integer, String> {
         private Bitmap myImage = null;
