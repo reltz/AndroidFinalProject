@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name"> Projeto Final de Android</string>
+
     <string name="newsHelp">"Autor: Felipe Magnago\nVersão: 1\nClique use o botão buscar para procurar por um artigo"</string>
     <string name="newsYes">Sim</string>
     <string name="goToSaved">Ir para noticias salvas</string>
@@ -8,16 +9,28 @@
     <string name="newsOpen">Abrir noticia</string>
     <string name="newsDelete">Deletar noticia</string>
     <string name="newsSave">Salvar noticia</string>
+
+    <string name="nytSavedArticles">Artigos Salvos</string>
+
     <string name="nysearch">Buscar</string>
     <string name="nyBack">Voltar</string>
     <string name="nythelp">Ajuda</string>
+    <string name="confirm">CONFIRMAR!</string>
+    <string name="NYTsaved">Artigo salvo</string>
+    <string name="NYTdeleted">Artigo deletado</string>
     <string name="nyUnderstood">Entendi</string>
     <string name="nyAlertHelp">"Autor: Rodrigo Eltz \n Versao: 1.0
                 \n\n Instrucoes: Esse app mostra uma lista dos mais recentes artigos do New York Times. Tu podes selecionar um para ler e salvar nos favoritos, alem de poder procurar artigos usando a ferramenta de busca."
 
     </string>
     <string name="nySaveAlert">Clique em salvar para salvar o artigo!</string>
+    <string name="nyDeleteAlert">Clique em deletar para remover o artigo</string>
     <string name="nyButtonSave">Salvar</string>
+    <string name="nyButtonDelete">Deletar</string>
+    <string name="emptyList">Sua lista de artigos esta vazia</string>
+    <string name="typeHere">Digite aqui</string>
+    <string name="MySavedArticles">Meus artigos</string>
+    <string name="searchTitle">Resultados de Busca</string>
 
     <string name="flightStatus_menuBtnReturn">Botao Voltar Status de Voo</string>
     <string name="flightStatus_menuBtnHelp">Botao Ajuda Status de Voo</string>
