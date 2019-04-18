@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.androidfinalproject" >
+    package="com.example.androidfinalproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,22 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FlightStatusFlightInformation"></activity>
+        <activity android:name=".FlightStatusFlightInformationFragment"></activity>
+        <activity android:name=".FlightStatusFlightInformationEmpty" />
+        <activity android:name=".FlightStatusSharedPreferences" />
+        <activity android:name=".FlightStatusToolbarMenu" />
+        <activity android:name=".FlightStatusArrivalsInformation" />
+        <activity android:name=".FlightStatusFlightInformation" />
         <activity android:name=".FlightStatusHome" />
-        <activity android:name=".NewsFeed_MainActivity"/>
-        <!--activity android:name=".ArticleSearchList"></activity-->
+        <activity android:name=".NewsFeed_MainActivity" /> <!-- activity android:name=".ArticleSearchList"></activity -->
         <activity android:name=".FullArticle" />
-        <activity android:name=".NYTimes_MainActivity">
-
-
-        </activity>
-        <activity android:name=".FinalProject_MainActivity" >
+        <activity android:name=".NYTimes_MainActivity" />
+        <activity android:name=".FinalProject_MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".NewsFeed_Detail" />
     </application>
