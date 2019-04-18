@@ -21,11 +21,6 @@
         android:orderInCategory="3"
         app:showAsAction="always" />
 
-    <item android:id="@+id/articleSearchBtn"
-        android:icon="@drawable/dictionary"
-        android:orderInCategory="4"
-        app:showAsAction="always"
-        android:title="@string/flightStatus_menuBtnReturn" />
 
     <item android:id="@+id/dictionaryBtn"
         android:icon="@drawable/main_dic"

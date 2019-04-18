@@ -23,12 +23,6 @@ public class FinalProject_MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Final Project");
 
 
-        Button goToDictionary = findViewById(R.id.goToDictionary);
-
-        goToDictionary.setOnClickListener(c-> {
-            Intent goDict = new Intent(FinalProject_MainActivity.this, Dictionary_MainActivity.class);
-            startActivity(goDict);
-        });
 
     }
 
@@ -54,13 +48,11 @@ public class FinalProject_MainActivity extends AppCompatActivity {
                 Intent newsFeed = new Intent(FinalProject_MainActivity.this, NewsFeed_MainActivity.class);
                 startActivity(newsFeed);
                 break;
-            case R.id.articleSearchBtn:
-                Toast.makeText(this, "TO BE DEVELOPED", Toast.LENGTH_LONG).show();
-                break;
             case R.id.dictionaryBtn:
-                Intent dict = new Intent(FinalProject_MainActivity.this, Dictionary_MainActivity.class);
-                startActivity(dict);
+                Intent dictionary = new Intent(FinalProject_MainActivity.this, Dictionary_MainActivity.class);
+                startActivity(dictionary);
                 break;
+
         }
         return true;
 
