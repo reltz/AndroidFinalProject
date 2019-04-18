@@ -73,8 +73,9 @@ public class NYTimes_MainActivity extends AppCompatActivity {
         progress.setVisibility(View.VISIBLE);
 
         goBack.setOnClickListener(a -> {
+            Intent goHome = new Intent(NYTimes_MainActivity.this,FinalProject_MainActivity.class);
             Snackbar sb = Snackbar.make(goBack, R.string.nyBack, Snackbar.LENGTH_LONG);
-            sb.setAction(R.string.confirm, b -> finish());
+            sb.setAction(R.string.confirm, b -> startActivity(goHome));
             sb.show();
         });
 
