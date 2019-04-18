@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsFeed_Saved">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/newsFeedDetail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<Button-->
+        <!--android:id="@+id/newsFeedSearch"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_toRightOf="@+id/newsFeedET"-->
+        <!--android:layout_below="@+id/newsFeedDetail_toolbar"-->
+        <!--android:text="Search" />-->
+
+    <!--<EditText-->
+        <!--android:id="@+id/newsFeedET"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textPersonName"-->
+        <!--android:layout_below="@+id/newsFeedDetail_toolbar"-->
+        <!--android:hint="Enter a search"-->
+        <!--android:text="" />-->
+
+    <ListView
+        android:id="@+id/newsFeedSavedList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/newsFeedDetail_toolbar"
+        />
+    <!--<ListView-->
+        <!--android:id="@+id/newsFeedList2"-->
+        <!--android:layout_width="30pt"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_below="@+id/newsFeedDetail_toolbar"-->
+        <!--/>-->
+
+</RelativeLayout>
