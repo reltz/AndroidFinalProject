@@ -1,45 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FinalProject_MainActivity"
-    android:orientation="vertical">
+    android:background="@color/greenBack"
+    android:orientation="vertical"
+    >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/finalProjectToolbarMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <Button
-    android:id="@+id/goToFlightStatus"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Go to FlightStatus"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/cover2" />
 
-    <Button
-        android:id="@+id/goToNewsFeed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go to NewsFeed"/>
-
-    <Button
-        android:id="@+id/goNYtimes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go to Ney York Times"/>
-
-        <Button
-            android:id="@+id/goToDictionary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/goToDict"/>
-
-    </LinearLayout>
 </LinearLayout>

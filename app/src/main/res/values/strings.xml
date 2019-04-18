@@ -1,14 +1,33 @@
 <resources>
     <string name="app_name">Android Final Project</string>
 
+    <string name="newsHelp">"Author: Felipe Magnago\nVersion: 1\nClick search to look for your article of interest"</string>
+    <string name="newsYes">Yes</string>
+    <string name="goToSaved">Go To Saved News</string>
+    <string name="Cancel">Cancel</string>
+    <string name="newsOpen">Open Article</string>
+    <string name="newsDelete">Delete Article</string>
+    <string name="newsSave">Save Article</string>
+
+    <string name="nytSavedArticles">Saved Articles</string>
+
     <string name="nysearch">Search</string>
     <string name="nyBack">Go back</string>
     <string name="nythelp">Help</string>
+    <string name="confirm">CONFIRM!</string>
+    <string name="NYTsaved">Article saved</string>
+    <string name="NYTdeleted">Article Deleted</string>
     <string name="nyUnderstood">Understood</string>
     <string name="nyAlertHelp">"Author: Rodrigo Eltz \n Version: 1.0
                 \n\n Instructions: This app shows a list of latest New York Times Article. You can select one to read and save to your favorites, as well as search for articles using the search box."</string>
     <string name="nySaveAlert">Hit save if you want to save the article!</string>
+    <string name="nyDeleteAlert">Hit delete to remove the article!</string>
     <string name="nyButtonSave">Save</string>
+    <string name="nyButtonDelete">Delete</string>
+    <string name="emptyList">Your saved list is empty!</string>
+    <string name="typeHere">Type here</string>
+    <string name="MySavedArticles">My Articles</string>
+    <string name="searchTitle">Search Results</string>
 
     <string name="flightStatus_menuBtnReturn">Flight Status Return Button</string>
     <string name="flightStatus_menuBtnHelp">Flight Status Help Button</string>
@@ -24,16 +43,16 @@
     <string name="flightstatus_flight_status">Flight Status:\u0020</string>
     <string name="flightstatus_how_to_title">How to use the app</string>
     <!--<string name="flightstatus_instructions">In the home page, you can track flights by airport code or flight number or select saved flights.\n-->
-        <!--\n-->
-        <!--Tracking new flights:\n-->
-        <!--\t- Select the method, type the code/number and click Track Me.\n-->
-        <!--\t\tIf \'Airport Code\' is selected, a dialog box prompts the user to select arrivals or departures to display flights.\n-->
-        <!--\t\tIf \'Flight Number\' is selected, the found flight(s) are displayed.\n-->
-        <!--\tClick on the desired flight to display detailed information and/or save it to your list.\n-->
-        <!--\n-->
-        <!--Saved flights:\n-->
-        <!--\tAfter flights are tracked, user has the option to save them to 'My Flights' list.\n-->
-        <!--\tThis list allows user to check flight information by clicking on the desired flight or delete it from the list.\n</string>-->
+    <!--\n-->
+    <!--Tracking new flights:\n-->
+    <!--\t- Select the method, type the code/number and click Track Me.\n-->
+    <!--\t\tIf \'Airport Code\' is selected, a dialog box prompts the user to select arrivals or departures to display flights.\n-->
+    <!--\t\tIf \'Flight Number\' is selected, the found flight(s) are displayed.\n-->
+    <!--\tClick on the desired flight to display detailed information and/or save it to your list.\n-->
+    <!--\n-->
+    <!--Saved flights:\n-->
+    <!--\tAfter flights are tracked, user has the option to save them to 'My Flights' list.\n-->
+    <!--\tThis list allows user to check flight information by clicking on the desired flight or delete it from the list.\n</string>-->
     <string name="flightstatus_version">Activity Version: 2</string>
     <string name="flightstatus_author">Author: Gustavo Adami</string>
 
