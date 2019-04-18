@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/DictToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/lightGray" />
+    <TextView
+        android:id="@+id/wordTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:text="@string/titlePlaceHolder"
+        android:layout_below="@+id/DictToolBar"/>
+    <TextView
+        android:id="@+id/wordDefinition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wordTitle"
+        android:textSize="30sp"
+        android:text="@string/definitionPlaceHolder"
+        android:paddingBottom="20sp"/>
+    <Button
+        android:id="@+id/DictSaveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wordDefinition"
+        android:text="@string/dictSave" />
+
+    <ProgressBar
+        android:layout_centerVertical="true"
+        android:id="@+id/searchProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="invisible"/>
+</RelativeLayout>

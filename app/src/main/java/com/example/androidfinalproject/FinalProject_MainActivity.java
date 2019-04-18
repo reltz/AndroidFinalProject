@@ -1,7 +1,6 @@
 package com.example.androidfinalproject;
 
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,13 +23,19 @@ public class FinalProject_MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Final Project");
 
 
+        Button goToDictionary = findViewById(R.id.goToDictionary);
+
+        goToDictionary.setOnClickListener(c-> {
+            Intent goDict = new Intent(FinalProject_MainActivity.this, Dictionary_MainActivity.class);
+            startActivity(goDict);
+        });
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menuItems) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.final_project_toolbar_menu, menuItems);
-
         return true;
     }
 
@@ -51,6 +56,10 @@ public class FinalProject_MainActivity extends AppCompatActivity {
                 break;
             case R.id.articleSearchBtn:
                 Toast.makeText(this, "TO BE DEVELOPED", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.dictionaryBtn:
+                Intent dict = new Intent(FinalProject_MainActivity.this, Dictionary_MainActivity.class);
+                startActivity(dict);
                 break;
         }
         return true;

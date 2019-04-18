@@ -58,4 +58,21 @@
     <!--\tThis list allows user to check flight information by clicking on the desired flight or delete it from the list.\n</string>-->
     <string name="flightstatus_version">Versao da Atividade: 2</string>
     <string name="flightstatus_author">Autor: Gustavo Adami</string>
+
+
+    <string name="dictSearchEditTextHint">Digite aqui</string>
+    <string name="dictSearchBtn">Procurar</string>
+    <string name="titlePlaceHolder">Procurando Título..</string>
+    <string name="definitionPlaceHolder">Procurando Definição..</string>
+    <string name="goToDict">Vá para o Dicionário</string>
+    <string name="dictSave">Salvar</string>
+    <string name="dictDelete">Deletar</string>
+    <string name="dictSaved">Palavra salva!</string>
+    <string name="dictDeleted">Palavra deletada!</string>
+    <string name="dictDelSnackBar">Tem certeza que quer deletar?</string>
+    <string name="dictGoHome">Quer ir para a tela principal?</string>
+    <string name="dictShortAbout">Autor: Raphael Guerra, Versão: 1.0</string>
+    <string name="dictAbout">Autor: Raphael Guerra \n Versão: 1.0 \n Instruções: Digite a palavra que deseja pesquisar online e clique no botão Pesquisar. Ao clicar em qualquer item da lista de palavras salvas abrirá uma tela com a definição salva localmente.</string>
+    <string name="dictPositive">SIM</string>
+    <string name="dictNegative">NÃO</string>
 </resources>
