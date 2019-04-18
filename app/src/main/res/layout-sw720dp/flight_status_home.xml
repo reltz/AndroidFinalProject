@@ -13,7 +13,7 @@
 
     <RelativeLayout
         android:id="@+id/flightStatusTrack"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/flightStatusToolbarHome" >
 
@@ -69,25 +69,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/flightstatus_saved_flights"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/flightStatusTrack" />
 
     <ListView
         android:id="@+id/flightStatusSavedFlights"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/flightStatusSavedFlightsTxt" >
 
     </ListView>
 
-    <!--<ProgressBar-->
-        <!--android:id="@+id/flightProgressBar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:visibility="invisible"-->
-        <!--style="?android:attr/progressBarStyleInverse"-->
-        <!--android:layout_below="@+id/flightStatusSavedFlightsTxt"-->
-        <!--/>-->
+    <FrameLayout
+        android:id="@+id/flightStatusDetailFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/flightStatusToolbarHome"
+        android:layout_toEndOf="@id/flightStatusSavedFlights">
+
+    </FrameLayout>
 
     <ProgressBar
         android:id="@+id/flightStatusInfoProgressBar"
@@ -96,6 +95,9 @@
         android:visibility="invisible"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_below="@+id/flightStatusSavedFlights"/>
+
+
+
 
 
 </RelativeLayout>

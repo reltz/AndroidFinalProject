@@ -59,6 +59,15 @@
     <string name="flightstatus_version">Versao da Atividade: 2</string>
     <string name="flightstatus_author">Autor: Gustavo Adami</string>
 
+    <string name="flight_airport">AEROPORTO</string>
+    <string name="flight_airport_code">CODIGO DO AEROPORTO</string>
+    <string name="flight_arrivals">CHEGADAS</string>
+    <string name="flight_altitude">Altitude do voo:</string>
+    <string name="flight_speed">Velocidade</string>
+    <string name="flight_speedhorizontal">Horizontal:</string>
+    <string name="flight_speedground">Plano:</string>
+    <string name="flight_speedvertical">Vertical:</string>
+    <string name="flight_save">Salvar</string>
 
     <string name="dictSearchEditTextHint">Digite aqui</string>
     <string name="dictSearchBtn">Procurar</string>

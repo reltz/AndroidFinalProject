@@ -55,6 +55,15 @@
     <!--\tThis list allows user to check flight information by clicking on the desired flight or delete it from the list.\n</string>-->
     <string name="flightstatus_version">Activity Version: 2</string>
     <string name="flightstatus_author">Author: Gustavo Adami</string>
+    <string name="flight_airport">AIRPORT</string>
+    <string name="flight_airport_code">AIRPORT CODE</string>
+    <string name="flight_arrivals">ARRIVALS</string>
+    <string name="flight_altitude">Flight Altitude:</string>
+    <string name="flight_speed">Flight Speed</string>
+    <string name="flight_speedhorizontal">Horizontal:</string>
+    <string name="flight_speedground">Ground:</string>
+    <string name="flight_speedvertical">Vertical:</string>
+    <string name="flight_save">Save</string>
 
 
 

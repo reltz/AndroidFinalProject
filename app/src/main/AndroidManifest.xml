@@ -11,6 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".FlightStatusFlightInformationFragment"></activity>
+        <activity android:name=".FlightStatusFlightInformationEmpty" />
+        <activity android:name=".FlightStatusSharedPreferences" />
+        <activity android:name=".FlightStatusToolbarMenu" />
+        <activity android:name=".FlightStatusArrivalsInformation" />
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
