@@ -252,6 +252,7 @@ public class NewsFeed_MainActivity extends AppCompatActivity {
                 //JSON
                 // URL
                 URL jurl = new URL("http://webhose.io/filterWebContent?token=d6c018d7-dd06-4f40-94f0-ac6d291d3c5f&format=json&sort=crawled&q=Soccer");
+                Log.e("connectd?","yes");
                 HttpURLConnection jurlConnection = (HttpURLConnection) jurl.openConnection();
                 InputStream inStream = jurlConnection.getInputStream();
                 //create JSON object for response
@@ -267,12 +268,15 @@ public class NewsFeed_MainActivity extends AppCompatActivity {
                 //now a json table
                 JSONObject jObject = new JSONObject(result);
                 JSONArray results = jObject.getJSONArray("posts");
+                Log.e("gotArrayPost","yes");
                 for (int index = 0; index < results.length(); index++) {
 
+                    if (!results.getJSONObject(index).getString("title").equals("")){
                         news.add(new NewsFeed(index, results.getJSONObject(index).getString("title"),
                                 results.getJSONObject(index).getString("text"), results.getJSONObject(index).getString("url"),
                                 null));
-                }
+                        Log.e("sizeOfArray",Integer.toString(news.size()));
+                }}
 
             } catch (Exception e) {
                 e.printStackTrace();

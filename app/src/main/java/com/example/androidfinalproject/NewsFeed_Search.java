@@ -210,10 +210,11 @@ public class NewsFeed_Search extends AppCompatActivity {
                 JSONArray results = jObject.getJSONArray("posts");
                 for (int index = 0; index < results.length(); index++) {
 
+                    if (!results.getJSONObject(index).getString("title").equals("")){
                     news.add(new NewsFeed(index, results.getJSONObject(index).getString("title"),
                             results.getJSONObject(index).getString("text"), results.getJSONObject(index).getString("url"),
                             null));
-                }
+                }}
 
             } catch (Exception e) {
                 e.printStackTrace();
